@@ -2,3 +2,6 @@ res://example/Game.tscn
 res://Game.tscn
 res://game.tscn
 res://tileset/tileset.tres
+res://scenes/test_level.tscn
+res://character.gd
+res://pathfind_astar.gd
