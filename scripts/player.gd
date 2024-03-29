@@ -7,7 +7,7 @@ const ARRIVE_DISTANCE = 10.0
 
 @export var speed: float = 200.0
 @export var steps: int = 3
-
+var _speed_multiplier = 1.
 #var _state = State.IDLE
 var _velocity = Vector2()
 
@@ -32,8 +32,10 @@ func _process(_delta):
 		_steps -= 1
 		if _steps <= 0:
 			_change_state(Logic.State.IDLE)
+			_move()
 		if _path.is_empty():
 			_change_state(Logic.State.IDLE)
+			_move()
 			return
 		_next_point = _path[0]
 
@@ -47,28 +49,45 @@ func _unhandled_input(event):
 		if event.is_action_pressed(&"move_to"):
 			_change_state(Logic.State.FOLLOW)
 
+var _queue = []
+
 func _input(event):
-	if event.is_action_pressed("ui_left"):
-		_move(Vector2(-64,0))
-	elif event.is_action_pressed("ui_right"):
-		_move(Vector2(64,0))
-	elif event.is_action_pressed("ui_up"):
-		_move(Vector2(0,-64))
-	elif event.is_action_pressed("ui_down"):
-		_move(Vector2(0,64))
+	if event is InputEventKey:		
+		if event.is_action_pressed("ui_left") || event.keycode==KEY_A:
+			_add_to_move_queue(Vector2(-64,0))
+		elif event.is_action_pressed("ui_right")|| event.keycode==KEY_D:
+			_add_to_move_queue(Vector2(64,0))
+		elif event.is_action_pressed("ui_up")|| event.keycode==KEY_W:
+			_add_to_move_queue(Vector2(0,-64))
+		elif event.is_action_pressed("ui_down")|| event.keycode==KEY_S:
+			_add_to_move_queue(Vector2(0,64))
 
 func _move_to(local_position):
-	var desired_velocity = (local_position - position).normalized() * speed
+	var desired_velocity = (local_position - position).normalized() * speed * _speed_multiplier
 	var steering = desired_velocity - _velocity
 	_velocity += steering / MASS
 	position += _velocity * get_process_delta_time()
 	rotation = _velocity.angle()
 	return position.distance_to(local_position) < ARRIVE_DISTANCE
 
-func _move(direction_vector:Vector2):
+func _add_to_move_queue(direction_vector:Vector2):
+	_queue.append(direction_vector)
+	_speed_multiplier = _queue.size()
+	if(_queue.size() == 1):
+		_move()
+	else:
+		pass
+
+func _move():
+	if _queue.size() == 0 || Logic._state!=Logic.State.IDLE:
+		return
+	var direction_vector = _queue[0]
+	_queue.remove_at(0)
+
 	_path = _tile_map.find_path(position, position + direction_vector )
 	if _path.size() < 2:
 		_change_state(Logic.State.IDLE)
+		_queue = []
 		return
 	_next_point = _path[1]
 	Logic.set_actual_state(Logic.State.FOLLOW)

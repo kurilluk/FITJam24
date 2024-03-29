@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://oybtobbwv3t1"]
 
-[ext_resource type="Texture2D" uid="uid://do0hg3aqkivt3" path="res://images/coast_sand_05_diff_4k-assets/dirt.jpg" id="1_gxupq"]
+[ext_resource type="Texture2D" uid="uid://b3wc7fm68biig" path="res://images/beton.png" id="1_enx0l"]
 [ext_resource type="Texture2D" uid="uid://dwtim0m3nhh5v" path="res://images/House-assets/house.png" id="2_26krk"]
 [ext_resource type="Script" path="res://pathfind_astar.gd" id="3_d85i2"]
 [ext_resource type="Script" path="res://character.gd" id="4_qd3hc"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="5_hskfw"]
-[ext_resource type="Texture2D" uid="uid://vsempfpeu7wr" path="res://sprites/character.png" id="6_nf57s"]
+[ext_resource type="Texture2D" uid="uid://by23djxj6dfnd" path="res://images/ball-assets/ball.png" id="6_d1ipo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afv8s"]
 texture = ExtResource("2_26krk")
@@ -37,7 +37,7 @@ colors = PackedColorArray(1, 0.893555, 0, 1, 0.265625, 1, 0.490903, 1, 0.0154343
 [node name="Background2" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(512, 2.08165e-12)
-texture = ExtResource("1_gxupq")
+texture = ExtResource("1_enx0l")
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 2048, 1024)
 
@@ -52,6 +52,7 @@ position = Vector2(-480, 32)
 script = ExtResource("4_qd3hc")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Character"]
+visible = false
 material = SubResource("1")
 position = Vector2(-20, 0)
 rotation = 1.5708
@@ -69,7 +70,7 @@ color_ramp = SubResource("3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Character"]
 position = Vector2(7, 0)
-texture = ExtResource("6_nf57s")
+texture = ExtResource("6_d1ipo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
