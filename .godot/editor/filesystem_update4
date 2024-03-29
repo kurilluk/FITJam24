@@ -1,0 +1,5 @@
+res://game.tscn
+res://tileset/tileset.tres
+res://character.gd
+res://scenes/light_map.tscn
+res://scripts/astar.gd
