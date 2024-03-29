@@ -21,7 +21,7 @@ offsets = PackedFloat32Array(0, 0.692737, 1)
 colors = PackedColorArray(1, 0.893555, 0, 1, 0.265625, 1, 0.490903, 1, 0.0154343, 0.688679, 0.987793, 1)
 
 [node name="Player" type="Marker2D"]
-position = Vector2(32, 32)
+position = Vector2(25, 31)
 script = ExtResource("1_stbbn")
 steps = 5
 
@@ -63,8 +63,11 @@ scale_amount_curve = SubResource("2")
 color_ramp = SubResource("3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(7, 0)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_x7kxx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)
 offset = Vector2(576, 324)

@@ -69,6 +69,7 @@ func _move(direction_vector:Vector2):
 	_path = _tile_map.find_path(position, position + direction_vector )
 	if _path.size() < 2:
 		_change_state(Logic.State.IDLE)
+		return
 	_next_point = _path[1]
 	Logic.set_actual_state(Logic.State.FOLLOW)
 
