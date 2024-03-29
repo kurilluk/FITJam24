@@ -31,22 +31,23 @@ position = Vector2(4, 2)
 color = Color(0.0509804, 0.00392157, 0.0588235, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_g4e2b")]
-position = Vector2(552, 328)
+position = Vector2(537, 288)
 
 [node name="Tramp" parent="." instance=ExtResource("7_jqrqf")]
+visible = false
 position = Vector2(440, 128)
 
 [node name="Tramp2" parent="." instance=ExtResource("7_jqrqf")]
+visible = false
 position = Vector2(888, 336)
 
 [node name="Tramp3" parent="." instance=ExtResource("7_jqrqf")]
+visible = false
 position = Vector2(712, 608)
 
 [node name="Tramp4" parent="." instance=ExtResource("7_jqrqf")]
+visible = false
 position = Vector2(944, 152)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(576, 324)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d126f")

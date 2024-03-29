@@ -29,8 +29,9 @@ steps = 5
 position = Vector2(287, 84)
 
 [node name="OverLight" type="PointLight2D" parent="Node2D"]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(-286, -84)
 rotation = 0.523599
+scale = Vector2(0.5, 0.5)
 energy = 0.54
 texture = ExtResource("2_4bwnu")
 texture_scale = 1.42
@@ -64,3 +65,6 @@ color_ramp = SubResource("3")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7, 0)
 texture = ExtResource("3_x7kxx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
