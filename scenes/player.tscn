@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://btqmn3pt72x8f"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_stbbn"]
+[ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="2_0tn0f"]
+[ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="2_4bwnu"]
+[ext_resource type="Texture2D" uid="uid://vsempfpeu7wr" path="res://sprites/character.png" id="3_x7kxx"]
+
+[sub_resource type="CanvasItemMaterial" id="1"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="2"]
+_data = [Vector2(0, 0), 0.0, 1.15429, 0, 0, Vector2(0.316832, 0.342045), 0.0399209, 0.0399209, 0, 0, Vector2(1, 0.136364), -1.05591, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="3"]
+offsets = PackedFloat32Array(0, 0.692737, 1)
+colors = PackedColorArray(1, 0.893555, 0, 1, 0.265625, 1, 0.490903, 1, 0.0154343, 0.688679, 0.987793, 1)
+
+[node name="Player" type="Marker2D"]
+position = Vector2(32, 32)
+script = ExtResource("1_stbbn")
+steps = 5
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(287, 84)
+
+[node name="OverLight" type="PointLight2D" parent="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 0.523599
+energy = 0.54
+texture = ExtResource("2_4bwnu")
+texture_scale = 1.42
+
+[node name="Light" type="PointLight2D" parent="Node2D"]
+position = Vector2(-279, -84)
+scale = Vector2(0.652344, 0.621094)
+energy = 4.43
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_4bwnu")
+texture_scale = 1.6
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("1")
+position = Vector2(-20, 0)
+rotation = 1.5708
+amount = 30
+texture = ExtResource("2_0tn0f")
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_curve = SubResource("2")
+color_ramp = SubResource("3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, 0)
+texture = ExtResource("3_x7kxx")

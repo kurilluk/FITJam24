@@ -70,9 +70,9 @@ func find_path(local_start_point, local_end_point):
 	_end_point = local_to_map(local_end_point)
 	_path = _astar.get_point_path(_start_point, _end_point)
 
-	if not _path.is_empty():
-		set_cell(0, _start_point, 0, Vector2i(Tile.START_POINT, 0))
-		set_cell(0, _end_point, 0, Vector2i(Tile.END_POINT, 0))
+	#if not _path.is_empty():
+		#set_cell(0, _start_point, 0, Vector2i(Tile.START_POINT, 0))
+		#set_cell(0, _end_point, 0, Vector2i(Tile.END_POINT, 0))
 
 	# Redraw the lines and circles from the start to the end point.
 	queue_redraw()

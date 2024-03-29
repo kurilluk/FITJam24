@@ -1,25 +1,17 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://f3wmg8detyai"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://f3wmg8detyai"]
 
 [ext_resource type="Texture2D" uid="uid://c11typow28mkc" path="res://tileset/tilesheet.png" id="1_th3tw"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6il3b"]
-polygon = PackedVector2Array(-32, -32, -1.375, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4k8e4"]
-polygon = PackedVector2Array(-32, -32, -1.375, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ke5ij"]
-polygon = PackedVector2Array(-32, -32, -1.375, -32, 32, -32, 32, 32, -32, 32)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ejqk7"]
+polygon = PackedVector2Array(-20.5, -32, -26.5, -28, -32, -18.5, -32, 19.5, -27.5, 25.5, -22.5, 32, 21.5, 32, 27.5, 27.5, 32, 19.5, 32, -21.5, 26, -28, 18, -32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btc3f"]
 texture = ExtResource("1_th3tw")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_6il3b")
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ejqk7")
 1:0/0 = 0
-1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_4k8e4")
 2:0/0 = 0
-2:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ke5ij")
 
 [resource]
 tile_size = Vector2i(64, 64)
