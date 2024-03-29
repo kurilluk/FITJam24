@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1711719323
+character.gd::GDScript::-1::1711665502::0::1::::<>Node2D<>::
+game.tscn::PackedScene::-1::1711714302::0::1::::<><>::
+icon.svg::CompressedTexture2D::3200327525646015247::1711718646::1711718654::1::::<><>::
+pathfind_astar.gd::GDScript::-1::1711665502::0::1::::<>TileMap<>::
+::res://art/::1711718750
+::res://scenes/::1711718712
+::res://scripts/::1711718760
+::res://sprites/::1711719323
+character.png::CompressedTexture2D::1511389609731655421::1711665502::1711719325::1::::<><>::
+space.png::CompressedTexture2D::2406803016406767807::1711665502::1711719325::1::::<><>::
+sparkle.png::CompressedTexture2D::3056016977826182299::1711665502::1711719325::1::::<><>::
+::res://tileset/::1711719323
+tileset.tres::TileSet::410104364932629344::1711712030::0::1::::<><>::uid://c11typow28mkc::::res://tileset/tilesheet.png
+tilesheet.png::CompressedTexture2D::6652622416011364222::1711665502::1711719325::1::::<><>::
