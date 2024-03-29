@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="FITJam24_NotAlone"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/test_level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Logic="*res://scripts/logic.gd"
 
 [display]
 
