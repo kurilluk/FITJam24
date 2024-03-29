@@ -70,4 +70,3 @@ texture = ExtResource("3_x7kxx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, 0)
-offset = Vector2(576, 324)

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://baj4xukvf568b" path="res://sprites/space.png" id="1_fwx4r"]
 [ext_resource type="TileSet" uid="uid://f3wmg8detyai" path="res://tileset/tileset.tres" id="2_ldp7d"]
 [ext_resource type="Script" path="res://scripts/astar.gd" id="3_jy3ml"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="4_g4e2b"]
-[ext_resource type="PackedScene" path="res://scenes/tramp.tscn" id="7_jqrqf"]
+[ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="4_g4e2b"]
+[ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="7_jqrqf"]
 
 [sub_resource type="Environment" id="Environment_d126f"]
 glow_intensity = 3.33
@@ -13,7 +13,7 @@ glow_strength = 0.96
 glow_blend_mode = 0
 glow_hdr_threshold = 1.95
 
-[node name="Proof_of_concept" type="Control"]
+[node name="Proof_of_concept2" type="Control"]
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
