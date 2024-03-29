@@ -67,7 +67,7 @@ position = Vector2(4, 2)
 color = Color(0.0509804, 0.00392157, 0.0588235, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(217, 469)
+position = Vector2(287, 84)
 
 [node name="OverLight" type="PointLight2D" parent="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -77,6 +77,26 @@ texture = ExtResource("7_3ovxr")
 texture_scale = 1.42
 
 [node name="Light" type="PointLight2D" parent="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.652344, 0.621094)
+energy = 4.43
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("7_3ovxr")
+texture_scale = 1.6
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(388, 77)
+
+[node name="OverLight" type="PointLight2D" parent="Node2D2"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 0.523599
+energy = 0.54
+texture = ExtResource("7_3ovxr")
+texture_scale = 1.42
+
+[node name="Light" type="PointLight2D" parent="Node2D2"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.652344, 0.621094)
 energy = 4.43
