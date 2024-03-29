@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lg40imni7ynw"]
+[gd_scene load_steps=11 format=3 uid="uid://lg40imni7ynw"]
 
 [ext_resource type="Texture2D" uid="uid://baj4xukvf568b" path="res://sprites/space.png" id="1_y5kbj"]
 [ext_resource type="TileSet" uid="uid://f3wmg8detyai" path="res://tileset/tileset.tres" id="2_jj605"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="4_ovjsc"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="5_gkrhw"]
 [ext_resource type="Texture2D" uid="uid://vsempfpeu7wr" path="res://sprites/character.png" id="6_gwawb"]
+[ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="7_3ovxr"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
@@ -60,3 +61,27 @@ texture = ExtResource("6_gwawb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(4, 2)
+color = Color(0.0509804, 0.00392157, 0.0588235, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(217, 469)
+
+[node name="OverLight" type="PointLight2D" parent="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 0.523599
+energy = 0.54
+texture = ExtResource("7_3ovxr")
+texture_scale = 1.42
+
+[node name="Light" type="PointLight2D" parent="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.652344, 0.621094)
+energy = 4.43
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("7_3ovxr")
+texture_scale = 1.6
