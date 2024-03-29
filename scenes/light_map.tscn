@@ -49,6 +49,8 @@ script = ExtResource("3_1p66w")
 [node name="Character" type="Marker2D" parent="."]
 position = Vector2(32, 32)
 script = ExtResource("4_ovjsc")
+speed = null
+steps = null
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Character"]
 material = SubResource("1")
@@ -76,17 +78,17 @@ texture = ExtResource("6_gwawb")
 visible = false
 color = Color(0.0509804, 0.00392157, 0.0588235, 1)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="LIght1" type="Node2D" parent="."]
 position = Vector2(39, -203)
 
-[node name="OverLight" type="PointLight2D" parent="Node2D"]
+[node name="OverLight" type="PointLight2D" parent="LIght1"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 rotation = 0.523599
 energy = 0.54
 texture = ExtResource("7_3ovxr")
 texture_scale = 1.42
 
-[node name="Light" type="PointLight2D" parent="Node2D"]
+[node name="Light" type="PointLight2D" parent="LIght1"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.652344, 0.621094)
 energy = 4.43
@@ -96,17 +98,17 @@ shadow_filter_smooth = 4.0
 texture = ExtResource("7_3ovxr")
 texture_scale = 1.6
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Light2" type="Node2D" parent="."]
 position = Vector2(540, 94)
 
-[node name="OverLight" type="PointLight2D" parent="Node2D2"]
+[node name="OverLight" type="PointLight2D" parent="Light2"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 rotation = 0.523599
 energy = 0.54
 texture = ExtResource("7_3ovxr")
 texture_scale = 1.42
 
-[node name="Light" type="PointLight2D" parent="Node2D2"]
+[node name="Light" type="PointLight2D" parent="Light2"]
 position = Vector2(36, -37)
 scale = Vector2(0.652344, 0.621094)
 energy = 4.43
