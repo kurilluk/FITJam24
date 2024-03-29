@@ -1,13 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://lg40imni7ynw"]
+[gd_scene load_steps=14 format=3 uid="uid://lg40imni7ynw"]
 
-[ext_resource type="Texture2D" uid="uid://baj4xukvf568b" path="res://sprites/space.png" id="1_y5kbj"]
-[ext_resource type="TileSet" uid="uid://f3wmg8detyai" path="res://tileset/tileset.tres" id="2_jj605"]
+[ext_resource type="Texture2D" uid="uid://do0hg3aqkivt3" path="res://images/coast_sand_05_diff_4k-assets/dirt.jpg" id="1_qpxpu"]
+[ext_resource type="Texture2D" uid="uid://dwtim0m3nhh5v" path="res://images/House-assets/house.png" id="2_t5gml"]
 [ext_resource type="Script" path="res://scripts/astar.gd" id="3_1p66w"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="4_ovjsc"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="5_gkrhw"]
 [ext_resource type="Texture2D" uid="uid://vsempfpeu7wr" path="res://sprites/character.png" id="6_gwawb"]
 [ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="7_3ovxr"]
 [ext_resource type="Script" path="res://scripts/LightSensor.gd" id="8_j3j8c"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0pyr"]
+texture = ExtResource("2_t5gml")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bdpmu"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_c0pyr")
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
@@ -27,13 +37,13 @@ colors = PackedColorArray(1, 0.893555, 0, 1, 0.265625, 1, 0.490903, 1, 0.0154343
 [node name="Proof_of_concept" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("1_y5kbj")
+texture_repeat = 2
+texture = ExtResource("1_qpxpu")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(-520, -274)
-tile_set = ExtResource("2_jj605")
+tile_set = SubResource("TileSet_bdpmu")
 format = 2
-layer_0/tile_data = PackedInt32Array(65537, 0, 0, 65541, 0, 0, 65545, 0, 0, 65550, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196616, 0, 0, 196615, 0, 0, 196614, 0, 0, 262147, 0, 0, 262146, 0, 0, 262145, 0, 0, 327683, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 458761, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 458767, 0, 0, 393231, 0, 0, 327695, 0, 0, 262159, 0, 0, 196624, 0, 0, 262157, 0, 0, 327684, 0, 0, 262150, 0, 0, 131077, 0, 0, 196609, 0, 0, -65536, 0, 0, 131073, 0, 0, 393225, 0, 0, 458762, 0, 0, 524298, 0, 0, 327685, 0, 0, 262149, 0, 0, 196613, 0, 0, 327686, 0, 0, 327690, 0, 0, 262154, 0, 0)
+layer_0/tile_data = PackedInt32Array(196624, 0, 0, 524280, 65537, 0, 524281, 65537, 0, 524282, 65537, 0, 524283, 1, 0, 524284, 65537, 0, 524285, 65537, 0, 524286, 65537, 0, 524287, 65537, 0, 458752, 65537, 0, 458753, 65537, 0, 458754, 65537, 0, 458755, 65537, 0, 458756, 65537, 0, 458757, 65537, 0, 458758, 65537, 0, 458759, 65537, 0, -458760, 65537, 0, -458759, 65537, 0, -458758, 65537, 0, -458757, 65537, 0, -458756, 65537, 0, -458755, 65537, 0, -458754, 65537, 0, -458753, 65537, 0, -524288, 65537, 0, -524287, 65537, 0, -524286, 65537, 0, -524285, 65537, 0, -524284, 65537, 0, -524283, 65537, 0, -524282, 65537, 0, -524281, 65537, 0, -262150, 65537, 0, -196614, 65537, 0, -131078, 65537, 0, -65542, 65537, 0, -65541, 65537, 0, -5, 65537, 0, 65531, 65537, 0, 65532, 1, 0, 65533, 65537, 0, 65534, 65537, 0, 131070, 65537, 0, 196606, 65537, 0, 196607, 65537, 0, 131072, 65537, 0, 196608, 65537, 0, 196609, 65537, 0, 262146, 65537, 0, 262147, 65537, 0, 196611, 65537, 0, 196612, 65537, 0, 131076, 65537, 0, 131077, 65537, 0, 65541, 65537, 0, 65542, 65537, 0, 65543, 65537, 0, 196610, 65537, 0, -327686, 65537, 0, -327685, 65537, 0, -327684, 65537, 0, -327683, 65537, 0, -327682, 65537, 0, -327681, 65537, 0, -262145, 65537, 0, -327680, 65537, 0, -262144, 65537, 0, -262143, 65537, 0, -262142, 65537, 0, -262141, 1, 0, -196605, 65537, 0, -196604, 65537, 0, -131068, 65537, 0, -131067, 65537, 0, -65531, 65537, 0, -65530, 65537, 0, 6, 65537, 0, 7, 65537, 0)
 script = ExtResource("3_1p66w")
 
 [node name="Character" type="Marker2D" parent="."]
@@ -63,10 +73,11 @@ texture = ExtResource("6_gwawb")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0509804, 0.00392157, 0.0588235, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(45, -169)
+position = Vector2(39, -203)
 
 [node name="OverLight" type="PointLight2D" parent="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
