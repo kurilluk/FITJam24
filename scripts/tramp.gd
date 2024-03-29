@@ -13,6 +13,7 @@ var _state = State.IDLE
 var _velocity = Vector2()
 
 @onready var _tile_map = $"../TileMap"
+@onready var init_position = position
 
 var _click_position = Vector2()
 var _path = PackedVector2Array()
@@ -36,7 +37,8 @@ func _process(_delta):
 		#if _steps <= 0:
 			#_change_state(State.IDLE)
 		if _path.is_empty():
-			_change_state(State.IDLE)
+			_click_position = init_position
+			_change_state(State.FOLLOW)
 			return
 		_next_point = _path[0]
 

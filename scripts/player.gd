@@ -42,6 +42,7 @@ func _unhandled_input(event):
 	_click_position = get_global_mouse_position()
 	if _tile_map.is_point_walkable(_click_position):
 		#if event.is_action_pressed(&"teleport_to", false, true):
+			#get_tree().reload_scene()
 			#_change_state(State.IDLE)
 			#global_position = _tile_map.round_local_position(_click_position)
 		if event.is_action_pressed(&"move_to"):
