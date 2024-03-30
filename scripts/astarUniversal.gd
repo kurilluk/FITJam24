@@ -25,7 +25,7 @@ func _ready():
 	_astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	_astar.update()
 	
-	_astarTrumps.region = Rect2i(0, 0, 33, 17)
+	_astarTrumps.region = Rect2i(0, 0, 65, 17)
 	_astarTrumps.cell_size = CELL_SIZE
 	_astarTrumps.offset = CELL_SIZE * 0.5
 	_astarTrumps.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN

@@ -3,26 +3,22 @@ extends Node2D
 @onready var tramps = $"../Tramps"
 @onready var level = $"../Level"
 @onready var player = $"../Player"
-@onready var dynamic_ambient = $"../DynamicAmbient"
 
-# Called when the node enters the scene tree for the first time.
+
+var fear = 0.0
+
 func _ready():
-	dynamic_ambient.play()
-	#pass # Replace with function body.
-	
-func isOutside(outside):
-	if(outside):
-		return
 	pass
 
 func get_stress():
 	var ja = level.local_to_map(player.position)
 	var tileID = level.get_cell_source_id(0,ja)
 	if tileID == level.Tile.OBSTACLE:
+		player._change_location(player.Location.INSIDE)
 		for T in tramps.tramps:
 			T.beam.emitting=false
-		get_parent().particles.emitting = true
-		return 100
+		player.particles.emitting = true
+		return 10
 		
 	player.particles.emitting = false		
 	var total=0
@@ -42,8 +38,24 @@ func get_stress():
 			T.beam.emitting=false
 			pass
 			
-	#fear_bar.value = 50-50*total/9
-	return 100*total/9
+	if(total>0):
+		player._change_location(player.Location.HEALING)
+	else:
+		player._change_location(player.Location.OUTSIDE)
+	return -100*total/9.
 	
+const spu = 0.2
+var fromLast = 0.0
 func _process(delta):
-	fear_bar.value = 50+get_stress()/2
+	fromLast+=delta
+	if fromLast<spu:
+		return
+	fromLast=0.0
+
+	fear+=get_stress()
+	if fear>100:
+		fear=100
+		player.stressOverload()
+	if(fear<0):
+		fear=0
+	fear_bar.value = fear
