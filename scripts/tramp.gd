@@ -1,5 +1,4 @@
 class_name Tramp extends Node2D
-
 enum State { IDLE, FOLLOW }
 
 const MASS = 10.0

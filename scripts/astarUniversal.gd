@@ -1,6 +1,6 @@
 extends TileMap
 
-enum Tile { OBSTACLE, WALL, END_POINT }
+enum Tile { OBSTACLE, WALL }
 
 const CELL_SIZE = Vector2i(64, 64)
 const BASE_LINE_WIDTH = 3.0
@@ -8,6 +8,7 @@ const DRAW_COLOR = Color.WHITE * Color(1, 1, 1, 0.5)
 
 # The object for pathfinding on 2D grids.
 var _astar = AStarGrid2D.new()
+var _astarTrumps = AStarGrid2D.new()
 
 var _start_point = Vector2i()
 var _end_point = Vector2i()
@@ -23,25 +24,36 @@ func _ready():
 	_astar.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	_astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	_astar.update()
+	
+	_astarTrumps.region = Rect2i(0, 0, 33, 17)
+	_astarTrumps.cell_size = CELL_SIZE
+	_astarTrumps.offset = CELL_SIZE * 0.5
+	_astarTrumps.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	_astarTrumps.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	_astarTrumps.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	_astarTrumps.update()
 
 	for i in range(_astar.region.position.x, _astar.region.end.x):
 		for j in range(_astar.region.position.y, _astar.region.end.y):
 			var pos = Vector2i(i, j)
-			if get_cell_source_id(0, pos) == Tile.OBSTACLE:
+			var tileID = get_cell_source_id(0,pos)
+			if tileID == Tile.OBSTACLE:
+				_astarTrumps.set_point_solid(pos)
+			elif tileID == Tile.WALL:
+				_astarTrumps.set_point_solid(pos)
 				_astar.set_point_solid(pos)
-				#pass
 
 
-func _draw():
-	if _path.is_empty():
-		return
-
-	var last_point = _path[0]
-	for index in range(1, len(_path)):
-		var current_point = _path[index]
-		draw_line(last_point, current_point, DRAW_COLOR, BASE_LINE_WIDTH, true)
-		draw_circle(current_point, BASE_LINE_WIDTH * 2.0, DRAW_COLOR)
-		last_point = current_point
+#func _draw():
+	#if _path.is_empty():
+		#return
+#
+	#var last_point = _path[0]
+	#for index in range(1, len(_path)):
+		#var current_point = _path[index]
+		#draw_line(last_point, current_point, DRAW_COLOR, BASE_LINE_WIDTH, true)
+		#draw_circle(current_point, BASE_LINE_WIDTH * 2.0, DRAW_COLOR)
+		#last_point = current_point
 
 
 func round_local_position(local_position):
@@ -58,8 +70,8 @@ func is_point_walkable(local_position):
 func clear_path():
 	if not _path.is_empty():
 		_path.clear()
-		erase_cell(0, _start_point)
-		erase_cell(0, _end_point)
+		#erase_cell(0, _start_point)
+		#erase_cell(0, _end_point)
 		# Queue redraw to clear the lines and circles.
 		queue_redraw()
 
@@ -70,6 +82,23 @@ func find_path(local_start_point, local_end_point):
 	_start_point = local_to_map(local_start_point)
 	_end_point = local_to_map(local_end_point)
 	_path = _astar.get_point_path(_start_point, _end_point)
+
+	#if not _path.is_empty():
+		#set_cell(0, _start_point, 0, Vector2i(Tile.START_POINT, 0))
+		#set_cell(0, _end_point, 0, Vector2i(Tile.END_POINT, 0))
+
+	# Redraw the lines and circles from the start to the end point.
+	queue_redraw()
+
+	return _path.duplicate()
+	
+	
+func find_path_tramp(local_start_point, local_end_point):
+	clear_path()
+
+	_start_point = local_to_map(local_start_point)
+	_end_point = local_to_map(local_end_point)
+	_path = _astarTrumps.get_point_path(_start_point, _end_point)
 
 	#if not _path.is_empty():
 		#set_cell(0, _start_point, 0, Vector2i(Tile.START_POINT, 0))
