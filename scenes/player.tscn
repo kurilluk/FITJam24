@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://btqmn3pt72x8f"]
+[gd_scene load_steps=13 format=3 uid="uid://btqmn3pt72x8f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_stbbn"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="2_0tn0f"]
 [ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="2_4bwnu"]
 [ext_resource type="Texture2D" uid="uid://by23djxj6dfnd" path="res://images/ball-assets/ball.png" id="4_5alhh"]
 [ext_resource type="Texture2D" uid="uid://mhfkwbk0qetn" path="res://images/HealthParticles-assets/HealthParticlesMinus.png" id="5_8ll3n"]
+[ext_resource type="Texture2D" uid="uid://d2pyn643vo1xi" path="res://images/player.png" id="5_dbew1"]
+[ext_resource type="Texture2D" uid="uid://dy4q2pvlxbqo8" path="res://images/player_clear.png" id="6_sng0k"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
@@ -35,7 +37,6 @@ particles_anim_loop = false
 [node name="Player" type="Marker2D" node_paths=PackedStringArray("particles")]
 z_index = 2
 script = ExtResource("1_stbbn")
-steps = 5
 particles = NodePath("IncreaseStressParticles")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -75,9 +76,22 @@ scale_amount_curve = SubResource("2")
 color_ramp = SubResource("3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = 4
 material = SubResource("CanvasItemMaterial_bolcr")
 texture = ExtResource("4_5alhh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+z_index = 4
+material = SubResource("CanvasItemMaterial_bolcr")
+texture = ExtResource("5_dbew1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = 4
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_bolcr")
+texture = ExtResource("6_sng0k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
