@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://bilvria5rhnd6"]
+[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://drcy18v0gpc0d"]
 
 [ext_resource type="Texture2D" uid="uid://dpqfitos57xkj" path="res://images/Rocks-assets/Rocks.png" id="1_ptmrx"]
 
@@ -109,4 +109,4 @@ texture_region_size = Vector2i(64, 64)
 [resource]
 tile_size = Vector2i(64, 64)
 occlusion_layer_0/light_mask = 1
-sources/3 = SubResource("TileSetAtlasSource_k2bhm")
+sources/0 = SubResource("TileSetAtlasSource_k2bhm")
