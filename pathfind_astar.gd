@@ -16,7 +16,7 @@ var _path = PackedVector2Array()
 func _ready():
 	# Region should match the size of the playable area plus one (in tiles).
 	# In this demo, the playable area is 17×9 tiles, so the rect size is 18×10.
-	_astar.region = Rect2i(0, 0, 18, 10)
+	_astar.region = Rect2i(0, 0, 33, 17)
 	_astar.cell_size = CELL_SIZE
 	_astar.offset = CELL_SIZE * 0.5
 	_astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
@@ -44,11 +44,11 @@ func _draw():
 
 
 func round_local_position(local_position):
-	return map_to_local(local_to_map(local_position))
+	return map_to_local(local_to_map((local_position)))
 
 
 func is_point_walkable(local_position):
-	var map_position = local_to_map(local_position)
+	var map_position = local_to_map((local_position))
 	if _astar.is_in_boundsv(map_position):
 		return not _astar.is_point_solid(map_position)
 	return false
@@ -60,14 +60,13 @@ func clear_path():
 		erase_cell(0, _start_point)
 		erase_cell(0, _end_point)
 		# Queue redraw to clear the lines and circles.
-		queue_redraw()
-
+		queue_redraw()	
 
 func find_path(local_start_point, local_end_point):
 	clear_path()
-
-	_start_point = local_to_map(local_start_point)
-	_end_point = local_to_map(local_end_point)
+	
+	_start_point = local_to_map((local_start_point))
+	_end_point = local_to_map((local_end_point))
 	_path = _astar.get_point_path(_start_point, _end_point)
 
 	if not _path.is_empty():

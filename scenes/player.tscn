@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://btqmn3pt72x8f"]
+[gd_scene load_steps=9 format=3 uid="uid://btqmn3pt72x8f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_stbbn"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="2_0tn0f"]
 [ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="2_4bwnu"]
-[ext_resource type="Texture2D" uid="uid://vsempfpeu7wr" path="res://sprites/character.png" id="3_x7kxx"]
+[ext_resource type="Texture2D" uid="uid://by23djxj6dfnd" path="res://images/ball-assets/ball.png" id="4_5alhh"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
@@ -20,33 +20,33 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.692737, 1)
 colors = PackedColorArray(1, 0.893555, 0, 1, 0.265625, 1, 0.490903, 1, 0.0154343, 0.688679, 0.987793, 1)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bolcr"]
+light_mode = 1
+
 [node name="Player" type="Marker2D"]
-position = Vector2(25, 31)
 script = ExtResource("1_stbbn")
 steps = 5
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(287, 84)
 
 [node name="OverLight" type="PointLight2D" parent="Node2D"]
-position = Vector2(-286, -84)
 rotation = 0.523599
 scale = Vector2(0.5, 0.5)
-energy = 0.54
+energy = 1.23
 texture = ExtResource("2_4bwnu")
-texture_scale = 1.42
+texture_scale = 1.03
 
 [node name="Light" type="PointLight2D" parent="Node2D"]
-position = Vector2(-279, -84)
 scale = Vector2(0.652344, 0.621094)
-energy = 4.43
+energy = 2.93
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 4.0
 texture = ExtResource("2_4bwnu")
-texture_scale = 1.6
+texture_scale = 3.17
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 material = SubResource("1")
 position = Vector2(-20, 0)
 rotation = 1.5708
@@ -64,9 +64,8 @@ color_ramp = SubResource("3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(7, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_x7kxx")
+material = SubResource("CanvasItemMaterial_bolcr")
+texture = ExtResource("4_5alhh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1, 0)
+zoom = Vector2(2, 2)

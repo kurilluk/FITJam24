@@ -52,7 +52,8 @@ func _unhandled_input(event):
 var _queue = []
 
 func _input(event):
-	if event is InputEventKey:		
+	if event is InputEventKey and event.pressed and event.echo == false:
+		print(event.keycode)
 		if event.is_action_pressed("ui_left") || event.keycode==KEY_A:
 			_add_to_move_queue(Vector2(-64,0))
 		elif event.is_action_pressed("ui_right")|| event.keycode==KEY_D:
@@ -83,8 +84,12 @@ func _move():
 		return
 	var direction_vector = _queue[0]
 	_queue.remove_at(0)
-
-	_path = _tile_map.find_path(position, position + direction_vector )
+	var temp = _tile_map.get_used_rect()
+	var temp2 = position
+	if _tile_map.is_point_walkable(position + direction_vector):	
+		_path = _tile_map.find_path(position, position + direction_vector )
+	else:
+		print(position + direction_vector)
 	if _path.size() < 2:
 		_change_state(Logic.State.IDLE)
 		_queue = []
