@@ -8,6 +8,7 @@ const ARRIVE_DISTANCE = 5.0
 @export var speed: float = 200.0
 @export var steps: int = 3
 @export var particles:CPUParticles2D = null
+@export var TurnOnAtStart : Array[Node] = []
 
 var _speed_multiplier = 1.
 #var _state = State.IDLE
@@ -23,10 +24,20 @@ var _steps
 func _ready():
 	_change_state(Logic.State.IDLE)
 	_steps = steps
+	for a in TurnOnAtStart:
+		a.visible = true
 
 
 func _process(_delta):
 	if Logic._state != Logic.State.FOLLOW:
+		if Input.is_key_pressed(KEY_W):
+			_add_to_move_queue(Vector2(0,-64))
+		elif Input.is_key_pressed(KEY_S):
+			_add_to_move_queue(Vector2(0,64))
+		elif Input.is_key_pressed(KEY_A):
+			_add_to_move_queue(Vector2(-64,0))
+		elif Input.is_key_pressed(KEY_D):
+			_add_to_move_queue(Vector2(64,0))
 		return
 	var arrived_to_next_point = _move_to(_next_point)
 	if arrived_to_next_point:
@@ -54,6 +65,7 @@ func _unhandled_input(event):
 var _queue = []
 
 func _input(event):
+	return
 	if event is InputEventKey and event.pressed and event.echo == false:
 		#print(event.keycode)
 		if event.is_action_pressed("ui_left") || event.keycode==KEY_A:
