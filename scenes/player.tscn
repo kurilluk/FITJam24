@@ -41,7 +41,7 @@ texture = ExtResource("2_4bwnu")
 texture_scale = 3.17
 
 [node name="Sprite" type="Sprite2D" parent="."]
-z_index = 4
+z_index = 105
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_bolcr")
 texture = ExtResource("6_sng0k")
