@@ -8,10 +8,7 @@ func _ready():
 	var pathss = []
 	var timess = []
 	var kkt = """
-21,1,0,21,14,0
-30,5,1,30,7,1
-24,14,0.5,26,14,0.5
-4,7,0,12,7,0 
+35,8,1,37,6,0,37,10,0
 """
 	for lineUnsplit in kkt.split("\n"):
 		if(lineUnsplit == ""):

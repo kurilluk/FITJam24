@@ -14,10 +14,16 @@ var _start_point = Vector2i()
 var _end_point = Vector2i()
 var _path = PackedVector2Array()
 
+const WIDTH = 64
+const HEIGHT = 16
+func isInBounds(point_map):
+	if(point_map.x < 0 or point_map.x >= WIDTH or point_map.y < 0 or point_map.y >= HEIGHT):
+		return false
+	return true
 func _ready():
 	# Region should match the size of the playable area plus one (in tiles).
 	# In this demo, the playable area is 17×9 tiles, so the rect size is 18×10.
-	_astar.region = Rect2i(0, 0, 65, 17)
+	_astar.region = Rect2i(0, 0, WIDTH+1, HEIGHT+1)
 	_astar.cell_size = CELL_SIZE
 	_astar.offset = CELL_SIZE * 0.5
 	_astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
@@ -25,7 +31,7 @@ func _ready():
 	_astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	_astar.update()
 	
-	_astarTrumps.region = Rect2i(0, 0, 65, 17)
+	_astarTrumps.region = Rect2i(0, 0, WIDTH+1, HEIGHT+1)
 	_astarTrumps.cell_size = CELL_SIZE
 	_astarTrumps.offset = CELL_SIZE * 0.5
 	_astarTrumps.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
