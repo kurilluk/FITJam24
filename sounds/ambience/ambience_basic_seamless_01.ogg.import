@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/ambience_basic_seamless_01.ogg-9f67d333f2cd9f
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

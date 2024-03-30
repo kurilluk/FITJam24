@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/ambience_talking_seamless_02.mp3-c45b1d848a8d
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
