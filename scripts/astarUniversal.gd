@@ -92,12 +92,15 @@ func find_path(local_start_point, local_end_point):
 
 	return _path.duplicate()
 	
-	
-func find_path_tramp(local_start_point, local_end_point):
+func find_path_tramp(local_start_point, local_end_point,secondMap=false):
 	clear_path()
 
 	_start_point = local_to_map(local_start_point)
-	_end_point = local_to_map(local_end_point)
+	if(secondMap):
+		_end_point = local_end_point
+		
+	else:
+		_end_point = local_to_map(local_end_point)
 	_path = _astarTrumps.get_point_path(_start_point, _end_point)
 
 	#if not _path.is_empty():

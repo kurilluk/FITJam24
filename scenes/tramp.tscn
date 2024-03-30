@@ -36,8 +36,7 @@ particles_anim_loop = false
 position = Vector2(472, 352)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gbiho")
-steps = 5
-beam = NodePath("CPUParticles2D2")
+beam = NodePath("DecreaseStressParticles")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -80,10 +79,11 @@ initial_velocity_max = 50.0
 scale_amount_curve = SubResource("2")
 color_ramp = SubResource("3")
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+[node name="DecreaseStressParticles" type="CPUParticles2D" parent="."]
 light_mask = 0
 material = SubResource("CanvasItemMaterial_ydjuf")
 rotation = 4.89733
+emitting = false
 amount = 30
 speed_scale = 0.5
 randomness = 0.37

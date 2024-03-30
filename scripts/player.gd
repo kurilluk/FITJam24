@@ -7,6 +7,8 @@ const ARRIVE_DISTANCE = 5.0
 
 @export var speed: float = 200.0
 @export var steps: int = 3
+@export var particles:CPUParticles2D = null
+
 var _speed_multiplier = 1.
 #var _state = State.IDLE
 var _velocity = Vector2()
@@ -84,8 +86,6 @@ func _move():
 		return
 	var direction_vector = _queue[0]
 	_queue.remove_at(0)
-	var temp = _tile_map.get_used_rect()
-	var temp2 = position
 	if _tile_map.is_point_walkable(position + direction_vector):	
 		_path = _tile_map.find_path(position, position + direction_vector )
 	#else:

@@ -2,15 +2,20 @@ extends Node2D
 @onready var fear_bar = $"../../GUI/FearBar"
 @onready var tramps = $"../../Tramps"
 @onready var level = $"../../Level"
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func get_stress():
 	var ja = level.local_to_map(get_parent().position)
+	var tileID = level.get_cell_source_id(0,ja)
+	if tileID == level.Tile.OBSTACLE:
+		for T in tramps.tramps:
+			T.beam.emitting=false
+		get_parent().particles.emitting = true
+		return 100
+		
+	get_parent().particles.emitting = false		
 	var total=0
 	for T in tramps.tramps:
 		var on = level.local_to_map(T.transform.origin)
@@ -24,5 +29,8 @@ func _process(delta):
 		else:
 			T.beam.emitting=false
 			
-	fear_bar.value = total
-	pass
+	#fear_bar.value = 50-50*total/9
+	return 100*total/9
+	
+func _process(delta):
+	fear_bar.value = 50+get_stress()/2

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://btqmn3pt72x8f"]
+[gd_scene load_steps=11 format=3 uid="uid://btqmn3pt72x8f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_stbbn"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="2_0tn0f"]
 [ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="2_4bwnu"]
 [ext_resource type="Texture2D" uid="uid://by23djxj6dfnd" path="res://images/ball-assets/ball.png" id="4_5alhh"]
+[ext_resource type="Texture2D" uid="uid://mhfkwbk0qetn" path="res://images/HealthParticles-assets/HealthParticlesMinus.png" id="5_8ll3n"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
@@ -23,9 +24,19 @@ colors = PackedColorArray(1, 0.893555, 0, 1, 0.265625, 1, 0.490903, 1, 0.0154343
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bolcr"]
 light_mode = 1
 
-[node name="Player" type="Marker2D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ju00a"]
+blend_mode = 2
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Player" type="Marker2D" node_paths=PackedStringArray("particles")]
+z_index = 2
 script = ExtResource("1_stbbn")
 steps = 5
+particles = NodePath("IncreaseStressParticles")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -41,7 +52,7 @@ scale = Vector2(0.652344, 0.621094)
 energy = 2.93
 shadow_enabled = true
 shadow_filter = 1
-shadow_filter_smooth = 4.0
+shadow_filter_smooth = 3.0
 texture = ExtResource("2_4bwnu")
 texture_scale = 3.17
 
@@ -63,9 +74,31 @@ scale_amount_curve = SubResource("2")
 color_ramp = SubResource("3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 4
 material = SubResource("CanvasItemMaterial_bolcr")
 texture = ExtResource("4_5alhh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="IncreaseStressParticles" type="CPUParticles2D" parent="."]
+light_mask = 0
+z_index = 2
+material = SubResource("CanvasItemMaterial_ju00a")
+rotation = 4.89733
+emitting = false
+amount = 80
+lifetime = 0.7
+speed_scale = 0.4
+randomness = 0.49
+lifetime_randomness = 0.89
+fract_delta = false
+texture = ExtResource("5_8ll3n")
+emission_shape = 1
+emission_sphere_radius = 5.16
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 224.63
+initial_velocity_max = 379.86
+scale_amount_min = 0.1
+scale_amount_max = 0.5
