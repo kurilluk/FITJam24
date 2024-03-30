@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://f3wmg8detyai"]
+
+[ext_resource type="Texture2D" uid="uid://c11typow28mkc" path="res://tileset/tilesheet.png" id="1_th3tw"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ejqk7"]
+polygon = PackedVector2Array(-20.5, -32, -26.5, -28, -32, -18.5, -32, 19.5, -27.5, 25.5, -22.5, 32, 21.5, 32, 27.5, 27.5, 32, 19.5, 32, -21.5, 26, -28, 18, -32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btc3f"]
+texture = ExtResource("1_th3tw")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ejqk7")
+1:0/0 = 0
+2:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+sources/0 = SubResource("TileSetAtlasSource_btc3f")
+tile_proxies/coords_level = [[0, Vector2i(0, 0)], [4, Vector2i(0, 0)], [2, Vector2i(0, 0)], [4, Vector2i(1, 0)], [3, Vector2i(0, 0)], [4, Vector2i(2, 0)]]
