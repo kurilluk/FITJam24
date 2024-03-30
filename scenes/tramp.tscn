@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3cfww00ag4cy"]
+[gd_scene load_steps=11 format=3 uid="uid://d3cfww00ag4cy"]
 
 [ext_resource type="Script" path="res://scripts/tramp.gd" id="1_gbiho"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="2_bd3ko"]
 [ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="2_dw47v"]
 [ext_resource type="Texture2D" uid="uid://c3i3c0yif2yfk" path="res://images/ball-assets/trump.png" id="4_quy3u"]
+[ext_resource type="Texture2D" uid="uid://btgadkxdtc406" path="res://images/HealthParticles-assets/HealthParticles.png" id="5_mkbcv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kbtj1"]
+light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
@@ -20,14 +24,20 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.692737, 1)
 colors = PackedColorArray(1, 0.893555, 0, 1, 0.265625, 1, 0.490903, 1, 0.0154343, 0.688679, 0.987793, 1)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kbtj1"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ydjuf"]
+blend_mode = 2
 light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[node name="Tramp" type="Marker2D"]
+[node name="Tramp" type="Marker2D" node_paths=PackedStringArray("beam")]
 position = Vector2(472, 352)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gbiho")
 steps = 5
+beam = NodePath("CPUParticles2D2")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -49,6 +59,10 @@ shadow_filter_smooth = 4.0
 texture = ExtResource("2_dw47v")
 texture_scale = 1.69
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_kbtj1")
+texture = ExtResource("4_quy3u")
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false
 material = SubResource("1")
@@ -66,6 +80,16 @@ initial_velocity_max = 50.0
 scale_amount_curve = SubResource("2")
 color_ramp = SubResource("3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_kbtj1")
-texture = ExtResource("4_quy3u")
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+light_mask = 0
+material = SubResource("CanvasItemMaterial_ydjuf")
+rotation = 4.89733
+amount = 30
+speed_scale = 0.5
+randomness = 0.37
+texture = ExtResource("5_mkbcv")
+emission_shape = 1
+emission_sphere_radius = 60.42
+gravity = Vector2(1000, 1000)
+scale_amount_min = 0.1
+scale_amount_max = 0.5

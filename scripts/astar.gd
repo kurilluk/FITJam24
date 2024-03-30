@@ -29,6 +29,7 @@ func _ready():
 			var pos = Vector2i(i, j)
 			if get_cell_source_id(0, pos) == Tile.OBSTACLE:
 				_astar.set_point_solid(pos)
+				#pass
 
 
 func _draw():

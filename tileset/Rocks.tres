@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://drcy18v0gpc0d"]
+[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://drcy18v0gpc0d"]
 
 [ext_resource type="Texture2D" uid="uid://dpqfitos57xkj" path="res://images/Rocks-assets/Rocks.png" id="1_ptmrx"]
 
@@ -106,7 +106,24 @@ texture_region_size = Vector2i(64, 64)
 3:0/3/flip_v = true
 3:0/3/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_6vrs8")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vi5dw"]
+texture = ExtResource("1_ptmrx")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/modulate = Color(0.470588, 0, 0.0117647, 1)
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_dhqc2")
+1:0/0 = 0
+1:0/0/modulate = Color(0.470588, 0, 0.0117647, 1)
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_lk5xb")
+2:0/0 = 0
+2:0/0/modulate = Color(0.470588, 0, 0.0117647, 1)
+2:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_l4egl")
+3:0/0 = 0
+3:0/0/modulate = Color(0.470588, 0, 0.0117647, 1)
+3:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_aua1d")
+
 [resource]
 tile_size = Vector2i(64, 64)
 occlusion_layer_0/light_mask = 1
 sources/0 = SubResource("TileSetAtlasSource_k2bhm")
+sources/1 = SubResource("TileSetAtlasSource_vi5dw")

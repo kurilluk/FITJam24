@@ -1,4 +1,4 @@
-extends Node2D
+class_name Tramp extends Node2D
 
 enum State { IDLE, FOLLOW }
 
@@ -8,11 +8,13 @@ const ARRIVE_DISTANCE = 10.0
 @export var speed: float = 100.0
 @export var steps: int = 3
 @export var goal: Vector2 = Vector2.ZERO
-
+@export var beam:CPUParticles2D = null
 var _state = State.IDLE
 var _velocity = Vector2()
 
-@onready var _tile_map = $"../Level"
+@onready var _tile_map = $"../../Level"
+#@onready var beam = $CPUParticles2D2
+
 @onready var init_position = position
 
 var _click_position = Vector2()
