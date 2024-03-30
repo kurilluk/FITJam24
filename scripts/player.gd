@@ -1,4 +1,6 @@
 extends Node2D
+enum Location { INSIDE, OUTSIDE, HEALING }
+var location = Location.OUTSIDE
 
 const MASS = 10.0
 const ARRIVE_DISTANCE = 5.0
@@ -120,3 +122,14 @@ func _change_state(new_state):
 		# We don't want the character to move back to it in this example.
 		_next_point = _path[1]
 	Logic.set_actual_state(new_state) 
+
+
+func _change_location(new_location):
+	if(location==new_location):
+		return
+	if(new_location==Location.OUTSIDE):
+		location = Location.OUTSIDE
+	if(new_location==Location.INSIDE):
+		location = Location.INSIDE
+	if(new_location==Location.HEALING):
+		location = Location.HEALING
