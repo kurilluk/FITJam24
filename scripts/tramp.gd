@@ -63,7 +63,7 @@ func _process(_delta):
 		var randomSpread = 5
 		_next_point.x+=random.randf_range(-randomSpread,randomSpread)
 		_next_point.y+=random.randf_range(-randomSpread,randomSpread)
-		draw_line(position, _next_point, Color.BLACK , 3, true)
+		#draw_line(position, _next_point, Color.BLACK , 3, true)
 
 
 
