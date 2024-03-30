@@ -29,7 +29,7 @@ func _ready():
 			child.waypoints = pathss[i]
 			child.sleepTimes = timess[i]
 			child.position = level.map_to_local(pathss[i][0])
-			i+=1	
+			i+=1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

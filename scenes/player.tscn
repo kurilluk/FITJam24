@@ -43,13 +43,14 @@ particles = NodePath("IncreaseStressParticles")
 [node name="OverLight" type="PointLight2D" parent="Node2D"]
 rotation = 0.523599
 scale = Vector2(0.5, 0.5)
-energy = 1.23
+color = Color(0.0666667, 1, 1, 1)
+energy = 0.5
 texture = ExtResource("2_4bwnu")
 texture_scale = 1.03
 
 [node name="Light" type="PointLight2D" parent="Node2D"]
 scale = Vector2(0.652344, 0.621094)
-energy = 2.93
+energy = 2.0
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 3.0

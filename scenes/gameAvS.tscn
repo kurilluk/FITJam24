@@ -119,24 +119,27 @@ script = ExtResource("12_yqpm5")
 
 [node name="Tramp" parent="Tramps" instance=ExtResource("11_m77vg")]
 z_index = 1
-position = Vector2(98, 97)
+position = Vector2(984, 864)
 
-[node name="Tramp2" parent="Tramps" node_paths=PackedStringArray("beam") instance=ExtResource("11_m77vg")]
+[node name="Tramp2" parent="Tramps" instance=ExtResource("11_m77vg")]
 z_index = 1
-position = Vector2(98, 97)
-beam = NodePath("../Tramp/DecreaseStressParticles")
+position = Vector2(984, 864)
 
-[node name="Tramp3" parent="Tramps" node_paths=PackedStringArray("beam") instance=ExtResource("11_m77vg")]
+[node name="Tramp3" parent="Tramps" instance=ExtResource("11_m77vg")]
 z_index = 1
-position = Vector2(98, 97)
-beam = NodePath("../Tramp/DecreaseStressParticles")
+position = Vector2(984, 864)
+
+[node name="Tramp4" parent="Tramps" instance=ExtResource("11_m77vg")]
+z_index = 1
+position = Vector2(984, 864)
 
 [node name="Player" parent="." node_paths=PackedStringArray("TurnOnAtStart") instance=ExtResource("10_mslo6")]
 position = Vector2(512, 512)
 TurnOnAtStart = [NodePath("../CanvasModulate"), NodePath("../Level/Background")]
 
-[node name="StressMeter" type="Node2D" parent="Player"]
-script = ExtResource("11_6y3gv")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2c4")
+
+[node name="StressMeter" type="Node2D" parent="."]
+position = Vector2(512, 512)
+script = ExtResource("11_6y3gv")
