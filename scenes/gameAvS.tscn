@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bb38gi1cyox50"]
+[gd_scene load_steps=21 format=3 uid="uid://bb38gi1cyox50"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_gdy2b"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="2_cip7m"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="11_6y3gv"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_m77vg"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="12_yqpm5"]
+[ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="14_ftrb0"]
+[ext_resource type="Script" path="res://scripts/AudioTest.gd" id="15_hpm2t"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_foa8s"]
 light_mode = 1
@@ -143,3 +145,10 @@ environment = SubResource("Environment_ot2c4")
 [node name="StressMeter" type="Node2D" parent="."]
 position = Vector2(512, 512)
 script = ExtResource("11_6y3gv")
+
+[node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ftrb0")
+autoplay = true
+bus = &"Ambience"
+script = ExtResource("15_hpm2t")
+volume_dis = 10.0

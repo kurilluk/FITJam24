@@ -3,10 +3,17 @@ extends Node2D
 @onready var tramps = $"../Tramps"
 @onready var level = $"../Level"
 @onready var player = $"../Player"
+@onready var dynamic_ambient = $"../DynamicAmbient"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	dynamic_ambient.play()
+	#pass # Replace with function body.
+	
+func isOutside(outside):
+	if(outside):
+		return
+	pass
 
 func get_stress():
 	var ja = level.local_to_map(player.position)

@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 const MASS = 10.0
 const ARRIVE_DISTANCE = 5.0
 
