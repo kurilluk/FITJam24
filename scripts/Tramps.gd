@@ -7,10 +7,16 @@ var tramps = []
 func _ready():
 	var pathss = []
 	var timess = []
-	var file = FileAccess.open(PATHS, FileAccess.READ)
-	# get_csv_line ( String delim=”,” ) 
-	while not file.eof_reached():
-		var line = file.get_csv_line()
+	var kkt = """
+21,1,0,21,14,0
+30,5,1,30,7,1
+24,14,0.5,26,14,0.5
+4,7,0,12,7,0 
+"""
+	for lineUnsplit in kkt.split("\n"):
+		if(lineUnsplit == ""):
+			continue
+		var line = lineUnsplit.split(",")
 		var paths : Array[Vector2i]= []
 		var times : Array[float]= []
 		for i in range(0,line.size(),3):
@@ -18,7 +24,6 @@ func _ready():
 			times.append(1.0*float(line[i+2]))
 		pathss.append(paths)
 		timess.append(times)
-	file.close()
 
 	# gets children
 	var children = get_children()
