@@ -79,7 +79,7 @@ material = SubResource("CanvasItemMaterial_bolcr")
 texture = ExtResource("4_5alhh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="IncreaseStressParticles" type="CPUParticles2D" parent="."]
 light_mask = 0
