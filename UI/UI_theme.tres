@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dhwpta7qgho67"]
+
+[ext_resource type="FontFile" uid="uid://bndhiv2j056cg" path="res://UI/kenney_mini_square.ttf" id="1_ip6kt"]
+
+[resource]
+default_font = ExtResource("1_ip6kt")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)

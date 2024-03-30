@@ -11,7 +11,7 @@ var _speed_multiplier = 1.
 #var _state = State.IDLE
 var _velocity = Vector2()
 
-@onready var _tile_map = $"../TileMap"
+@onready var _tile_map = $"../Level"
 
 var _click_position = Vector2()
 var _path = PackedVector2Array()
