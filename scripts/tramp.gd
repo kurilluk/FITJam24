@@ -10,8 +10,8 @@ const ARRIVE_DISTANCE = 5.0
 @export var beam:CPUParticles2D = null
 
 
-@export var waypoints: Array[Vector2i] = []
-@export var sleepTimes: Array[float] = []
+var waypoints: Array[Vector2i] = []
+var sleepTimes: Array[float] = []
 var goalIndex = 0
 #@export var goal: Vector2 = Vector2.ZERO
 
@@ -60,9 +60,10 @@ func _process(_delta):
 			# _change_state(State.FOLLOW)
 			return
 		_next_point = _path[0]
-		var randomSpread = 10
+		var randomSpread = 5
 		_next_point.x+=random.randf_range(-randomSpread,randomSpread)
 		_next_point.y+=random.randf_range(-randomSpread,randomSpread)
+		draw_line(position, _next_point, Color.BLACK , 3, true)
 
 
 

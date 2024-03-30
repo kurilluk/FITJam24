@@ -17,7 +17,7 @@ var _path = PackedVector2Array()
 func _ready():
 	# Region should match the size of the playable area plus one (in tiles).
 	# In this demo, the playable area is 17×9 tiles, so the rect size is 18×10.
-	_astar.region = Rect2i(0, 0, 33, 17)
+	_astar.region = Rect2i(0, 0, 65, 17)
 	_astar.cell_size = CELL_SIZE
 	_astar.offset = CELL_SIZE * 0.5
 	_astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
