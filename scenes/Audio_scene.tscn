@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp2wiennh71cf"]
-
-[ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="1_loo8e"]
-
-[node name="AudioScene" type="Node"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("1_loo8e")]
