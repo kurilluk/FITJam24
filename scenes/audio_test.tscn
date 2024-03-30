@@ -10,3 +10,4 @@ stream = ExtResource("1_5af5y")
 autoplay = true
 bus = &"Ambience"
 script = ExtResource("1_lalnd")
+volume_dis = 10.0
