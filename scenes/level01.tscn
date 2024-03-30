@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://biogjax4fxdhd"]
+
+[ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_rbyeo"]
+[ext_resource type="TileSet" uid="uid://drcy18v0gpc0d" path="res://tileset/Rocks.tres" id="2_275g0"]
+[ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="3_preer"]
+[ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="4_fy0y7"]
+[ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_prte6"]
+[ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_qpigp"]
+[ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="12_te7ba"]
+[ext_resource type="Script" path="res://scripts/StressMeter.gd" id="13_qp8cs"]
+[ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="14_8saj4"]
+
+[sub_resource type="Environment" id="Environment_ot2c4"]
+glow_intensity = 3.33
+glow_strength = 0.96
+glow_blend_mode = 0
+glow_hdr_threshold = 1.95
+
+[node name="Game" type="Node2D"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="todo_texture_bar" type="TextureProgressBar" parent="GUI"]
+visible = false
+offset_right = 384.0
+offset_bottom = 40.0
+
+[node name="FearBar" type="ProgressBar" parent="GUI"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 640.0
+offset_bottom = 192.0
+theme = ExtResource("1_rbyeo")
+value = 50.0
+
+[node name="Level" type="TileMap" parent="."]
+z_index = 2
+tile_set = ExtResource("2_275g0")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65537, 0, 1, 131073, 0, 2, 65537, 0, 3, 131073, 0, 4, 196609, 0, 5, 131073, 0, 6, 196609, 0, 7, 1, 0, 8, 1, 0, 9, 131073, 0, 10, 65537, 0, 11, 196609, 0, 12, 196609, 0, 13, 131073, 0, 14, 1, 0, 15, 131073, 0, 16, 196609, 0, 17, 1, 0, 18, 131073, 0, 19, 196609, 0, 20, 65537, 0, 21, 65537, 0, 22, 196609, 0, 23, 131073, 0, 24, 1, 0, 25, 65537, 0, 26, 65537, 0, 27, 131073, 0, 28, 65537, 0, 29, 65537, 0, 30, 131073, 0, 31, 196609, 0, 983071, 65537, 0, 983070, 196609, 0, 983069, 65537, 0, 983068, 65537, 0, 983067, 196609, 0, 983066, 196609, 0, 983065, 65537, 0, 983064, 1, 0, 983063, 1, 0, 983062, 131073, 0, 983061, 196609, 0, 983060, 196609, 0, 983059, 196609, 0, 983058, 196609, 0, 983057, 131073, 0, 983056, 65537, 0, 983054, 65537, 0, 983052, 1, 0, 983050, 65537, 0, 983048, 65537, 0, 983046, 65537, 0, 983044, 1, 0, 983042, 131073, 0, 983040, 196609, 0, 917504, 65537, 0, 851968, 196609, 0, 786432, 196609, 0, 720896, 196609, 0, 655360, 1, 0, 589824, 65537, 0, 524288, 131073, 0, 458752, 1, 0, 393216, 65537, 0, 327680, 65537, 0, 262144, 131073, 0, 196608, 196609, 0, 131072, 131073, 0, 65536, 1, 0, 32, 65537, 0, 33, 1, 0, 34, 196609, 0, 35, 196609, 0, 36, 1, 0, 37, 65537, 0, 38, 196609, 0, 39, 65537, 0, 40, 65537, 0, 41, 196609, 0, 42, 1, 0, 43, 65537, 0, 44, 1, 0, 45, 131073, 0, 46, 196609, 0, 47, 131073, 0, 48, 1, 0, 49, 131073, 0, 50, 1, 0, 51, 1, 0, 52, 196609, 0, 53, 65537, 0, 54, 1, 0, 55, 196609, 0, 56, 131073, 0, 57, 65537, 0, 58, 196609, 0, 59, 131073, 0, 60, 196609, 0, 61, 196609, 0, 62, 131073, 0, 63, 1, 0, 65599, 1, 0, 131135, 65537, 0, 196671, 131073, 0, 262207, 1, 0, 327743, 65537, 0, 393279, 65537, 0, 458815, 196609, 0, 524351, 131073, 0, 589887, 65537, 0, 655423, 196609, 0, 720959, 196609, 0, 786495, 131073, 0, 852031, 131073, 0, 917567, 196609, 0, 983103, 131073, 0, 983102, 196609, 0, 983101, 1, 0, 983100, 65537, 0, 983099, 1, 0, 983098, 131073, 0, 983097, 65537, 0, 983096, 65537, 0, 983095, 65537, 0, 983094, 131073, 0, 983093, 196609, 0, 983092, 65537, 0, 983091, 65537, 0, 983090, 1, 0, 983089, 65537, 0, 983088, 65537, 0, 983087, 131073, 0, 983086, 1, 0, 983085, 65537, 0, 983084, 196609, 0, 983083, 131073, 0, 983082, 196609, 0, 983081, 131073, 0, 983080, 65537, 0, 983079, 65537, 0, 983078, 196609, 0, 983077, 65537, 0, 983076, 65537, 0, 983075, 131073, 0, 983074, 131073, 0, 983073, 196609, 0, 983072, 1, 0, 65552, 0, 196608, 131088, 65536, 65536, 196624, 196608, 0, 262160, 131072, 65536, 327696, 65536, 196608, 393232, 131072, 196608, 458768, 131072, 0, 524304, 131072, 0, 655376, 131072, 65536, 720912, 196608, 196608, 786448, 65536, 65536, 851984, 65536, 196608, 917520, 0, 0, 917522, 0, 0, 851986, 0, 0, 786450, 131072, 131072, 720914, 0, 65536, 655378, 0, 196608, 589842, 196608, 0, 524306, 131072, 0, 393234, 131072, 0, 327698, 131072, 65536, 262162, 131072, 131072, 196626, 65536, 65536, 131090, 0, 65536, 65554, 131072, 131072, 65556, 65536, 0, 131092, 196608, 0, 196628, 196608, 131072, 262164, 65536, 65536, 327700, 65536, 65536, 393236, 196608, 65536, 458772, 196608, 65536, 524308, 131072, 196608, 589844, 131072, 65536, 655380, 65536, 131072, 720916, 65536, 65536, 851988, 131072, 196608, 917524, 0, 131072, 917526, 196608, 196608, 851990, 65536, 131072, 786454, 131072, 131072, 720918, 196608, 65536, 655382, 196608, 196608, 524310, 131072, 196608, 458774, 131072, 131072, 393238, 65536, 196608, 327702, 0, 131072, 262166, 131072, 0, 196630, 196608, 65536, 131094, 196608, 131072, 65558, 196608, 131072, 65561, 0, 65536, 131097, 0, 196608, 196633, 65536, 196608, 327705, 131072, 0, 393241, 196608, 196608, 458777, 65536, 196608, 524313, 0, 131072, 589849, 131072, 196608, 655385, 0, 196608, 720921, 131072, 0, 786457, 131072, 131072, 851993, 131072, 0, 917529, 131072, 196608, 917532, 196608, 196608, 851996, 0, 131072, 786460, 196608, 131072, 720924, 196608, 131072, 655388, 131072, 131072, 589852, 196608, 65536, 327708, 65536, 0, 262172, 196608, 0, 196636, 131072, 196608, 131100, 131072, 131072, 65564, 131072, 0, 917540, 0, 0, 852004, 131072, 131072, 786468, 196608, 131072, 720932, 65536, 131072, 655396, 0, 0, 589860, 65536, 0, 524324, 196608, 65536, 458788, 196608, 131072, 393252, 0, 196608, 327716, 65536, 196608, 262180, 65536, 131072, 196644, 131072, 131072, 131108, 0, 65536, 65572, 131072, 131072, 524316, 196608, 131072, 393244, 196608, 0, 983041, 1, 0, 983045, 65537, 0, 983047, 131073, 0, 983049, 65537, 0, 983051, 65537, 0, 983053, 131073, 0, 983055, 196609, 0, 983043, 1, 0, 524297, 131072, 0, 655369, 0, 0)
+script = ExtResource("3_preer")
+
+[node name="Background" type="Sprite2D" parent="Level"]
+visible = false
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("4_fy0y7")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 4096, 1024)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 2
+color = Color(0.0509804, 0.00392157, 0.0588235, 1)
+
+[node name="Tramps" type="Node" parent="."]
+script = ExtResource("10_prte6")
+
+[node name="Tramp" parent="Tramps" instance=ExtResource("11_qpigp")]
+z_index = 1
+position = Vector2(984, 864)
+
+[node name="Tramp2" parent="Tramps" instance=ExtResource("11_qpigp")]
+z_index = 1
+position = Vector2(984, 864)
+
+[node name="Tramp3" parent="Tramps" instance=ExtResource("11_qpigp")]
+z_index = 1
+position = Vector2(984, 864)
+
+[node name="Tramp4" parent="Tramps" instance=ExtResource("11_qpigp")]
+z_index = 1
+position = Vector2(984, 864)
+
+[node name="Player" parent="." node_paths=PackedStringArray("TurnOnAtStart") instance=ExtResource("12_te7ba")]
+position = Vector2(608, 608)
+TurnOnAtStart = [NodePath("../CanvasModulate"), NodePath("../Level/Background")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ot2c4")
+
+[node name="StressMeter" type="Node2D" parent="."]
+position = Vector2(512, 512)
+script = ExtResource("13_qp8cs")
+
+[node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_8saj4")
+bus = &"Ambience"
