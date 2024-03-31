@@ -67,7 +67,7 @@ func _process(delta):
 		time_bar.text = timeStr
 	if(!textChanged && timeRemaining<0):
 		for ch in get_children():
-			ch.label.text = "chill"
+			ch.text = "chill"
 
 	fromLast+=delta
 	if fromLast<spu:

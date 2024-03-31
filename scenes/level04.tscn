@@ -121,6 +121,7 @@ end = NodePath("../End")
 speed = 100.0
 TurnOnAtStart = [NodePath("../CanvasModulate"), NodePath("../Level/Background")]
 nextID = 5
+runningMultiplier = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2c4")
@@ -128,7 +129,69 @@ environment = SubResource("Environment_ot2c4")
 [node name="StressMeter" type="Node2D" parent="."]
 position = Vector2(512, 512)
 script = ExtResource("8_xqgh4")
-time = 1
+time = 30
+
+[node name="LevelText7" type="Label" parent="StressMeter"]
+z_index = 101
+offset_left = 1599.0
+offset_top = -14.0
+offset_right = 1905.0
+offset_bottom = 106.0
+rotation = -1.57193
+theme = ExtResource("2_vb8o4")
+theme_override_font_sizes/font_size = 96
+text = "hurry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelText4" type="Label" parent="StressMeter"]
+z_index = 101
+offset_left = 2110.0
+offset_top = 47.0
+offset_right = 2416.0
+offset_bottom = 167.0
+rotation = -1.57193
+theme = ExtResource("2_vb8o4")
+theme_override_font_sizes/font_size = 96
+text = "hurry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelText6" type="Label" parent="StressMeter"]
+z_index = 101
+offset_left = 2247.0
+offset_top = 190.0
+offset_right = 2553.0
+offset_bottom = 310.0
+theme = ExtResource("2_vb8o4")
+theme_override_font_sizes/font_size = 96
+text = "hurry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelText3" type="Label" parent="StressMeter"]
+z_index = 101
+offset_left = 815.0
+offset_top = -133.0
+offset_right = 1121.0
+offset_bottom = -13.0
+theme = ExtResource("2_vb8o4")
+theme_override_font_sizes/font_size = 96
+text = "hurry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelText5" type="Label" parent="StressMeter"]
+z_index = 101
+offset_left = 1162.0
+offset_top = 57.0
+offset_right = 1468.0
+offset_bottom = 177.0
+theme = ExtResource("2_vb8o4")
+theme_override_font_sizes/font_size = 96
+text = "hurry"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_gkxaj")
@@ -187,38 +250,12 @@ text = "well
 played"
 vertical_alignment = 1
 
-[node name="LevelText3" type="Label" parent="LevelInfo"]
+[node name="LevelText8" type="Label" parent="LevelInfo"]
 z_index = 101
-layout_mode = 0
-offset_left = 1327.0
-offset_top = 379.0
-offset_right = 1633.0
-offset_bottom = 499.0
-theme = ExtResource("2_vb8o4")
-theme_override_font_sizes/font_size = 96
-text = "hurry"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelText5" type="Label" parent="LevelInfo"]
-z_index = 101
-layout_mode = 0
-offset_left = 1674.0
-offset_top = 569.0
-offset_right = 1980.0
-offset_bottom = 689.0
-theme = ExtResource("2_vb8o4")
-theme_override_font_sizes/font_size = 96
-text = "hurry"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelText5" type="Label" parent="LevelInfo/LevelText5"]
-z_index = 101
-offset_left = -237.0
-offset_top = 509.0
-offset_right = 315.0
-offset_bottom = 629.0
+offset_left = 1437.0
+offset_top = 1078.0
+offset_right = 2037.0
+offset_bottom = 2305.0
 theme = ExtResource("2_vb8o4")
 theme_override_font_sizes/font_size = 96
 text = "Seriously?
@@ -231,47 +268,6 @@ i'm in space
 
 
 spaaaaaace"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelText6" type="Label" parent="LevelInfo"]
-z_index = 101
-layout_mode = 0
-offset_left = 2759.0
-offset_top = 702.0
-offset_right = 3065.0
-offset_bottom = 822.0
-theme = ExtResource("2_vb8o4")
-theme_override_font_sizes/font_size = 96
-text = "hurry"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelText4" type="Label" parent="LevelInfo"]
-z_index = 101
-layout_mode = 0
-offset_left = 2622.0
-offset_top = 559.0
-offset_right = 2928.0
-offset_bottom = 679.0
-rotation = -1.57193
-theme = ExtResource("2_vb8o4")
-theme_override_font_sizes/font_size = 96
-text = "hurry"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelText7" type="Label" parent="LevelInfo"]
-z_index = 101
-layout_mode = 0
-offset_left = 2111.0
-offset_top = 498.0
-offset_right = 2417.0
-offset_bottom = 618.0
-rotation = -1.57193
-theme = ExtResource("2_vb8o4")
-theme_override_font_sizes/font_size = 96
-text = "hurry"
 horizontal_alignment = 1
 vertical_alignment = 1
 
