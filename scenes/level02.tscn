@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://kmp8f7m3tq3r"]
+[gd_scene load_steps=16 format=3 uid="uid://cmuev20b5nv7j"]
 
 [ext_resource type="Script" path="res://scripts/MMenu.gd" id="1_i637g"]
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="2_etgbm"]
@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="9_ol5ek"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_lwd7i"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_ce14m"]
-[ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="12_e2arm"]
+[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="12_e2arm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]
 
@@ -71,6 +71,7 @@ anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="TimeLimit" type="Label" parent="GUI/Control"]
+visible = false
 layout_mode = 2
 offset_left = -136.0
 offset_top = 104.0
