@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://biogjax4fxdhd"]
+[gd_scene load_steps=17 format=3 uid="uid://biogjax4fxdhd"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_rbyeo"]
 [ext_resource type="Script" path="res://scripts/MMenu.gd" id="1_tym3p"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="3_preer"]
 [ext_resource type="Texture2D" uid="uid://byo5k33gbv7xo" path="res://images/bar_cutBlur2_bitmap.png" id="3_vos73"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="4_fy0y7"]
-[ext_resource type="AudioStream" uid="uid://bw6dp3ntekjvf" path="res://sounds/ambience/ambience_basic_seamless_01.mp3" id="9_rxrm1"]
-[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="10_djf73"]
+[ext_resource type="AudioStream" uid="uid://7q2t6mah27b3" path="res://sounds/ambience/ambience_basic_seamless_01.mp3" id="9_rxrm1"]
+[ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="10_djf73"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_prte6"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_sewmd"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="12_te7ba"]
+[ext_resource type="Texture2D" uid="uid://d20wnxc4gerwr" path="res://UI/wsad-assets/wsad.png" id="13_j5s34"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="13_qp8cs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]
@@ -180,3 +181,8 @@ vertical_alignment = 1
 
 [node name="End" parent="." instance=ExtResource("10_djf73")]
 position = Vector2(2528, 544)
+
+[node name="Wsad" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(824, 760)
+texture = ExtResource("13_j5s34")

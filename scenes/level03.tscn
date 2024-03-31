@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="9_f4kp5"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_pydl1"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_632oo"]
-[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="11_b0us4"]
+[ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="11_b0us4"]
 [ext_resource type="Texture2D" uid="uid://d4lbhoobe2ejb" path="res://UI/shift-assets/Shift.png" id="13_g2va3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]

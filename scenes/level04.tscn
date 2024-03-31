@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="6_y0qps"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="7_c6s0p"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="8_xqgh4"]
-[ext_resource type="AudioStream" uid="uid://bw6dp3ntekjvf" path="res://sounds/ambience/ambience_basic_seamless_01.mp3" id="9_gkxaj"]
+[ext_resource type="AudioStream" uid="uid://7q2t6mah27b3" path="res://sounds/ambience/ambience_basic_seamless_01.mp3" id="9_gkxaj"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_xsrhc"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_yksfx"]
-[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="12_2vcc5"]
+[ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="12_2vcc5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]
 
@@ -248,6 +248,20 @@ theme = ExtResource("2_vb8o4")
 theme_override_font_sizes/font_size = 96
 text = "well 
 played"
+vertical_alignment = 1
+
+[node name="LevelText3" type="Label" parent="LevelInfo"]
+z_index = 101
+layout_mode = 0
+offset_left = 3624.0
+offset_top = 113.0
+offset_right = 4792.0
+offset_bottom = 602.0
+theme = ExtResource("2_vb8o4")
+theme_override_font_sizes/font_size = 96
+text = "cherish
+your
+time"
 vertical_alignment = 1
 
 [node name="LevelText8" type="Label" parent="LevelInfo"]
