@@ -37,7 +37,7 @@ func _process(_delta):
 		if(v.length_squared() > 0.1):
 			var newPos = position + 2*v*RUNNING_SPEED
 			var a = level.get_cell_source_id(0,level.local_to_map(newPos))
-			if(a == level.Tile.OBSTACLE || a==-1):				
+			if(a == level.Tile.OBSTACLE || a==-1):
 				necistaPoloha = true
 				position+=v*RUNNING_SPEED
 				rotation = (RUNNING_ROTATION_SPEED*v.angle()+rotation)/(RUNNING_ROTATION_SPEED+1)
@@ -106,9 +106,17 @@ func _process(_delta):
 
 var _queue = []
 
-# func _input(event):
-# 	return
-	# if event is InputEventKey and event.pressed and event.echo == false:
+var mouseClicked = false
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			var target_location = level.round_local_position(get_global_mouse_position())
+			mouseClicked = true
+			_queue = []
+			_path = []
+			_add_to_move_queue(target_location)
+			
+# 	return	# if event is InputEventKey and event.pressed and event.echo == false:
 	# 	if event.is_action_pressed("ui_left") || event.keycode==KEY_A:
 	# 		_add_to_move_queue(Vector2(-64,0))
 	# 	elif event.is_action_pressed("ui_right")|| event.keycode==KEY_D:
@@ -159,8 +167,13 @@ func _move():
 		return
 	var target_location = _queue[0]
 	_queue.remove_at(0)
-	if level.is_point_walkable(target_location):	
+	if(mouseClicked):
+		mouseClicked = false
+		_path = level.find_path(position, target_location )
+		_path.resize(min(5,_path.size()))
+	elif level.is_point_walkable(target_location):	
 		_path = level.find_path_tramp(position, target_location )
+	
 	if(_path.size()==0 && runningAway):
 		_path = [target_location,target_location]
 		
@@ -218,9 +231,17 @@ func stressOverload():
 	var runningAwayTarget = level.local_to_map(position)
 	runningAwayTarget.x = max(1,runningAwayTarget.x-krokuZpet)
 	
-	#_add_to_move_queue(level.map_to_local(runningAwayTarget))
-	#_speed_multiplier=10	
+	
+	
+	#while(level.get_cell_source_id(0,runningAwayTarget) == level.Tile.OBSTACLE):
+		#runningAwayTarget.x-=1
+	#_next_point_local = level.map_to_local(runningAwayTarget)
+	#_speed_multiplier=5
+	#_change_state(Logic.State.FOLLOW)
 	#return
+	
+	
+	
 
 	if level.get_cell_source_id(0,runningAwayTarget) == level.Tile.OBSTACLE:
 		for j in range(10):
