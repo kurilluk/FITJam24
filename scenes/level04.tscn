@@ -165,16 +165,14 @@ vertical_alignment = 1
 [node name="LevelText2" type="Label" parent="LevelInfo"]
 z_index = 101
 layout_mode = 0
-offset_left = 3609.0
-offset_top = 296.0
-offset_right = 4777.0
-offset_bottom = 785.0
+offset_left = 3624.0
+offset_top = 548.0
+offset_right = 4792.0
+offset_bottom = 1037.0
 theme = ExtResource("2_vb8o4")
 theme_override_font_sizes/font_size = 96
-text = "you just
-totally 
-won this
-game"
+text = "well 
+played"
 vertical_alignment = 1
 
 [node name="LevelText3" type="Label" parent="LevelInfo"]
@@ -187,6 +185,7 @@ offset_bottom = 499.0
 theme = ExtResource("2_vb8o4")
 theme_override_font_sizes/font_size = 96
 text = "hurry"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LevelText5" type="Label" parent="LevelInfo"]
@@ -199,6 +198,7 @@ offset_bottom = 689.0
 theme = ExtResource("2_vb8o4")
 theme_override_font_sizes/font_size = 96
 text = "hurry"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LevelText6" type="Label" parent="LevelInfo"]
@@ -211,6 +211,7 @@ offset_bottom = 822.0
 theme = ExtResource("2_vb8o4")
 theme_override_font_sizes/font_size = 96
 text = "hurry"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LevelText4" type="Label" parent="LevelInfo"]
@@ -224,6 +225,21 @@ rotation = -1.57193
 theme = ExtResource("2_vb8o4")
 theme_override_font_sizes/font_size = 96
 text = "hurry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelText7" type="Label" parent="LevelInfo"]
+z_index = 101
+layout_mode = 0
+offset_left = 2111.0
+offset_top = 498.0
+offset_right = 2417.0
+offset_bottom = 618.0
+rotation = -1.57193
+theme = ExtResource("2_vb8o4")
+theme_override_font_sizes/font_size = 96
+text = "hurry"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="End" parent="." instance=ExtResource("12_2vcc5")]
