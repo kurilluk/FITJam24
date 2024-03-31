@@ -6,9 +6,9 @@
 [ext_resource type="TileSet" uid="uid://drcy18v0gpc0d" path="res://tileset/Rocks.tres" id="4_he0ro"]
 [ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="5_shtey"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="6_ngcmq"]
+[ext_resource type="AudioStream" uid="uid://7q2t6mah27b3" path="res://sounds/ambience/ambience_basic_seamless_01.mp3" id="6_uj3gn"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="7_crmsb"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="8_duler"]
-[ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="9_f4kp5"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_pydl1"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_632oo"]
 [ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="11_b0us4"]
@@ -26,7 +26,7 @@ glow_strength = 0.96
 glow_blend_mode = 0
 glow_hdr_threshold = 1.95
 
-[node name="Game" type="Node2D"]
+[node name="Game2" type="Node2D"]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_74oq8")
@@ -118,7 +118,8 @@ script = ExtResource("8_duler")
 time = 1
 
 [node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_f4kp5")
+stream = ExtResource("6_uj3gn")
+autoplay = true
 bus = &"Ambience"
 
 [node name="Tramps" type="Node" parent="."]
