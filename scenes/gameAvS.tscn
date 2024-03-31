@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bb38gi1cyox50"]
+[gd_scene load_steps=19 format=3 uid="uid://bb38gi1cyox50"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_gdy2b"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="2_cip7m"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="11_6y3gv"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_m77vg"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="12_yqpm5"]
+[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="13_83vy1"]
 [ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="14_ftrb0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_foa8s"]
@@ -113,8 +114,10 @@ z_index = 1
 position = Vector2(984, 864)
 path = "1,1,0,5,5,1"
 
-[node name="Player" parent="." instance=ExtResource("10_mslo6")]
+[node name="Player" parent="." node_paths=PackedStringArray("end") instance=ExtResource("10_mslo6")]
 position = Vector2(1181, 478)
+end = NodePath("../End")
+nextID = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2c4")
@@ -126,3 +129,6 @@ script = ExtResource("11_6y3gv")
 [node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_ftrb0")
 bus = &"Ambience"
+
+[node name="End" parent="." instance=ExtResource("13_83vy1")]
+position = Vector2(2528, 544)

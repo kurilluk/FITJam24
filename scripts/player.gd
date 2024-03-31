@@ -2,7 +2,7 @@ extends Node2D
 enum Location { INSIDE, OUTSIDE, HEALING }
 var location = Location.OUTSIDE
 @onready var sprite = $Sprite
-
+@export var end : Node2D = null
 
 const MASS = 10.0
 const ARRIVE_DISTANCE = 5.0
@@ -24,8 +24,6 @@ var _velocity = Vector2()
 @onready var panic = $panic
 
 
-
-
 # var _click_position = Vector2()
 var _path = PackedVector2Array()
 var _next_point_local = Vector2()
@@ -36,6 +34,8 @@ func _ready():
 	# _steps = steps
 	for a in TurnOnAtStart:
 		a.visible = true
+	#if(end!=null):
+		#endMap = level.local_to_map(end.position)
 
 var isLastLeg = false
 const RUNNING_SPEED = 5.
@@ -75,7 +75,32 @@ func wiggle(_delta):
 	sprite.offset+=wiggleOffset
 	position+=wiggleOffset/2
 
+@export var nextID : int = 0
+var levels = {1:"res://scenes/level01.tscn", 2:"res://scenes/gameLevel2.tscn"}
+func _end():
+	if(nextID!=0):
+		if(nextID==1):
+			print(get_tree().change_scene_to_file(levels[1]))
+		elif(nextID==2):
+			print(get_tree().change_scene_to_file(levels[2]))
+		elif nextID==3:
+			print(get_tree().change_scene_to_file(levels[3]))
+			
+		# get_tree().change_scene_to_file(next)
+		# get_tree().reload_current_scene()
+	print("end")
+	pass
+
+
 func _process(_delta):
+	if end!=null && (position-end.position).length_squared() < 25:
+		scale*=0.9
+		end.scale=scale
+		rotation+=2
+		end.rotation+=2
+		if(scale.x<0.01):
+			_end()
+		return
 	if(location==Location.INSIDE):
 		wiggle(_delta)
 	elif wiggleOffset.length_squared()>0.0001:
