@@ -1,13 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://biogjax4fxdhd"]
+[gd_scene load_steps=13 format=3 uid="uid://biogjax4fxdhd"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_rbyeo"]
 [ext_resource type="TileSet" uid="uid://drcy18v0gpc0d" path="res://tileset/Rocks.tres" id="2_275g0"]
+[ext_resource type="Texture2D" uid="uid://xxevbr8qqnmg" path="res://images/bar_cut_bitmap.png" id="2_f56y4"]
 [ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="3_preer"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="4_fy0y7"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_prte6"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="12_te7ba"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="13_qp8cs"]
 [ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="14_8saj4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2xea"]
+texture = ExtResource("2_f56y4")
+axis_stretch_horizontal = 1
 
 [sub_resource type="Environment" id="Environment_ot2c4"]
 glow_intensity = 3.33
@@ -29,6 +36,13 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="GUI/Control"]
+layout_mode = 0
+offset_left = -104.0
+offset_top = -52.0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="CenterContainer" type="CenterContainer" parent="GUI/Control"]
 layout_mode = 0
 offset_left = -960.0
@@ -37,16 +51,22 @@ offset_right = -920.0
 offset_bottom = -500.0
 
 [node name="todo_texture_bar" type="TextureProgressBar" parent="GUI"]
-offset_right = 384.0
-offset_bottom = 40.0
+offset_left = 128.0
+offset_top = 96.0
+offset_right = 512.0
+offset_bottom = 136.0
 
 [node name="FearBar" type="ProgressBar" parent="GUI"]
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 640.0
-offset_bottom = 192.0
+layout_direction = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 1010.0
+offset_bottom = 50.0
 theme = ExtResource("1_rbyeo")
-value = 50.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxEmpty_y7p5t")
+theme_override_styles/fill = SubResource("StyleBoxTexture_h2xea")
+value = 100.0
 
 [node name="Level" type="TileMap" parent="."]
 z_index = 2
