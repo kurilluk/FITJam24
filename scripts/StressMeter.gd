@@ -24,7 +24,7 @@ func get_stress():
 		for T in tramps.tramps:
 			T.beam.emitting=false
 		#player.particles.emitting = true
-		return 10
+		return 50./ups
 		
 	#player.particles.emitting = false
 	var total=0
@@ -48,7 +48,7 @@ func get_stress():
 		player._change_location(player.Location.HEALING)
 	else:
 		player._change_location(player.Location.OUTSIDE)
-	return -100*int(total)/9.
+	return -500.*int(total)/(9.*ups)
 	
 var spu = 1./ups
 var fromLast = 0.0
@@ -56,12 +56,12 @@ func _process(delta):
 	timeRemaining-=delta
 	if(time_bar!=null):
 		var absTime = abs(timeRemaining)
-		var min = str(int(absTime/60))
+		var minut = str(int(absTime/60))
 		var sec = str(int(absTime)%60)
 		if(sec.length()==1):
 			sec="0"+sec
 		sec+="."+str(int((absTime-int(absTime))*100))
-		var timeStr = min+":"+sec
+		var timeStr = minut+":"+sec
 		#print(timeStr)
 		time_bar.text = timeStr
 

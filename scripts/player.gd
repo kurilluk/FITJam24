@@ -127,6 +127,7 @@ func _process(_delta):
 				shift = v*RUNNING_SPEED*runningMultiplier
 			else:
 				shift = v*RUNNING_SPEED
+			shift*=75*_delta
 			var newPos = position+2*shift
 			var a = level.get_cell_source_id(0,level.local_to_map(newPos))
 			if(a == level.Tile.OBSTACLE || a==-1):
