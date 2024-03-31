@@ -252,6 +252,7 @@ vertical_alignment = 1
 
 [node name="LevelText8" type="Label" parent="LevelInfo"]
 z_index = 101
+layout_mode = 0
 offset_left = 1437.0
 offset_top = 1078.0
 offset_right = 2037.0

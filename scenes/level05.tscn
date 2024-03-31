@@ -122,7 +122,7 @@ position = Vector2(352, 928)
 end = NodePath("../End")
 speed = 100.0
 TurnOnAtStart = [NodePath("../CanvasModulate"), NodePath("../Level/Background")]
-nextID = 5
+nextID = 6
 runningMultiplier = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

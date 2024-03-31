@@ -1,0 +1,216 @@
+[gd_scene load_steps=15 format=3 uid="uid://c5xsjcww1wb5"]
+
+[ext_resource type="Script" path="res://scripts/MMenu.gd" id="1_56yaq"]
+[ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="2_outp6"]
+[ext_resource type="Texture2D" uid="uid://byo5k33gbv7xo" path="res://images/bar_cutBlur2_bitmap.png" id="3_18mab"]
+[ext_resource type="TileSet" uid="uid://drcy18v0gpc0d" path="res://tileset/Rocks.tres" id="4_cnmrm"]
+[ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="5_6j6fc"]
+[ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="6_kbcse"]
+[ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="7_g8avv"]
+[ext_resource type="Script" path="res://scripts/StressMeter.gd" id="8_wwtej"]
+[ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="9_hfvew"]
+[ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_ts1s0"]
+[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="12_7c3tl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2xea"]
+texture = ExtResource("3_18mab")
+axis_stretch_horizontal = 1
+
+[sub_resource type="Environment" id="Environment_ot2c4"]
+glow_intensity = 3.33
+glow_strength = 0.96
+glow_blend_mode = 0
+glow_hdr_threshold = 1.95
+
+[node name="Game" type="Node2D"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_56yaq")
+
+[node name="MMenu" type="Label" parent="GUI"]
+offset_left = 1592.0
+offset_top = 1004.0
+offset_right = 1858.0
+offset_bottom = 1052.0
+theme = ExtResource("2_outp6")
+theme_override_font_sizes/font_size = 38
+text = "M = main menu"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="FearBar" type="ProgressBar" parent="GUI"]
+texture_filter = 1
+layout_direction = 2
+offset_left = 24.0
+offset_top = 1004.0
+offset_right = 1024.0
+offset_bottom = 1052.0
+theme = ExtResource("2_outp6")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/background = SubResource("StyleBoxEmpty_y7p5t")
+theme_override_styles/fill = SubResource("StyleBoxTexture_h2xea")
+
+[node name="FearLabel" type="Label" parent="GUI/FearBar"]
+layout_mode = 0
+offset_left = 165.0
+offset_right = 386.0
+offset_bottom = 48.0
+theme = ExtResource("2_outp6")
+theme_override_font_sizes/font_size = 38
+text = "Fear level"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="TimeLimit" type="Label" parent="GUI/Control"]
+visible = false
+layout_mode = 2
+offset_left = -136.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 184.0
+theme = ExtResource("2_outp6")
+theme_override_font_sizes/font_size = 64
+text = "00:00:00"
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI/Control"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 144.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="Level" type="TileMap" parent="."]
+z_index = 2
+tile_set = ExtResource("4_cnmrm")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65537, 0, 1, 131073, 0, 2, 65537, 0, 3, 131073, 0, 4, 196609, 0, 5, 131073, 0, 6, 196609, 0, 7, 131073, 0, 8, 1, 0, 9, 131073, 0, 10, 65537, 0, 11, 196609, 0, 12, 196609, 0, 13, 131073, 0, 14, 1, 0, 15, 131073, 0, 16, 196609, 0, 17, 1, 0, 18, 131073, 0, 19, 196609, 0, 20, 65537, 0, 21, 65537, 0, 22, 196609, 0, 23, 131073, 0, 24, 1, 0, 25, 65537, 0, 26, 65537, 0, 27, 131073, 0, 28, 65537, 0, 29, 65537, 0, 30, 131073, 0, 31, 1, 0, 983040, 196609, 0, 917504, 65537, 0, 851968, 196609, 0, 786432, 196609, 0, 720896, 196609, 0, 655360, 1, 0, 589824, 65537, 0, 524288, 131073, 0, 458752, 1, 0, 393216, 65537, 0, 327680, 65537, 0, 262144, 131073, 0, 196608, 196609, 0, 131072, 131073, 0, 65536, 1, 0, 32, 65537, 0, 33, 1, 0, 34, 196609, 0, 35, 196609, 0, 36, 1, 0, 37, 65537, 0, 38, 196609, 0, 39, 65537, 0, 40, 65537, 0, 41, 196609, 0, 42, 1, 0, 43, 65537, 0, 44, 1, 0, 45, 131073, 0, 46, 196609, 0, 47, 131073, 0, 48, 1, 0, 49, 131073, 0, 50, 1, 0, 51, 1, 0, 52, 196609, 0, 53, 65537, 0, 54, 1, 0, 55, 196609, 0, 56, 131073, 0, 57, 65537, 0, 58, 196609, 0, 59, 131073, 0, 60, 196609, 0, 61, 196609, 0, 62, 131073, 0, 63, 1, 0, 1048576, 196609, 0, 1114112, 131073, 0, 1179648, 65537, 0, 1245184, 1, 0, 1310720, 131073, 0, 1376256, 65537, 0, 1441792, 196609, 0, 1507328, 1, 0, 1507329, 1, 0, 1507330, 196609, 0, 1507331, 131073, 0, 1507332, 131073, 0, 1507333, 1, 0, 1507334, 196609, 0, 1507352, 1, 0, 1507353, 65537, 0, 1507354, 65537, 0, 1507355, 196609, 0, 1507356, 131073, 0, 1507357, 1, 0, 1507358, 196609, 0, 1507359, 65537, 0, 1507360, 65537, 0, 1507361, 131073, 0, 1507362, 131073, 0, 1507363, 131073, 0, 1507364, 131073, 0, 1507365, 1, 0, 1507366, 1, 0, 1507367, 65537, 0, 1507368, 196609, 0, 1507369, 1, 0, 1507370, 196609, 0, 1507371, 131073, 0, 1507372, 196609, 0, 1507373, 65537, 0, 1507374, 65537, 0, 1507375, 131073, 0, 1507376, 65537, 0, 1507377, 131073, 0, 1507378, 1, 0, 1507379, 131073, 0, 1507380, 65537, 0, 1507381, 1, 0, 1507382, 65537, 0, 1507383, 1, 0, 1507384, 65537, 0, 1507385, 131073, 0, 1507386, 65537, 0, 1507387, 1, 0, 1507388, 1, 0, 1507389, 131073, 0, 1507390, 196609, 0, 1507391, 1, 0, 1507392, 131073, 0, 1507393, 196609, 0, 1507394, 65537, 0, 1507395, 65537, 0, 1507396, 1, 0, 1507397, 65537, 0, 1507398, 196609, 0, 1507399, 196609, 0, 1507400, 65537, 0, 1507401, 1, 0, 1507402, 1, 0, 1507403, 1, 0, 1507404, 65537, 0, 1507405, 131073, 0, 1507406, 1, 0, 1507407, 65537, 0, 1507408, 1, 0, 1507409, 65537, 0, 1507410, 65537, 0, 1507411, 196609, 0, 1507412, 131073, 0, 1507413, 1, 0, 1507414, 196609, 0, 1507415, 131073, 0, 1507416, 196609, 0, 1507417, 65537, 0, 1507418, 196609, 0, 1507419, 1, 0, 1507420, 65537, 0, 1507421, 196609, 0, 1507422, 196609, 0, 1507423, 1, 0, 1507424, 1, 0, 1507425, 196609, 0, 1507426, 196609, 0, 1507427, 65537, 0, 1507428, 131073, 0, 1507429, 1, 0, 1507430, 65537, 0, 1507431, 131073, 0, 1507432, 196609, 0, 1507433, 131073, 0, 1507434, 131073, 0, 1507435, 196609, 0, 1507436, 1, 0, 1507437, 131073, 0, 1507438, 196609, 0, 1507439, 1, 0, 1507440, 1, 0, 1507441, 65537, 0, 1507442, 196609, 0, 1507443, 131073, 0, 1507444, 1, 0, 1507445, 131073, 0, 1507446, 196609, 0, 1507447, 196609, 0, 1507448, 131073, 0, 1507449, 196609, 0, 1507450, 131073, 0, 1507451, 196609, 0, 1507452, 196609, 0, 1507453, 131073, 0, 1507454, 196609, 0, 1507455, 1, 0, 64, 1, 0, 65, 65537, 0, 66, 65537, 0, 67, 196609, 0, 68, 131073, 0, 69, 1, 0, 70, 65537, 0, 71, 65537, 0, 72, 131073, 0, 73, 1, 0, 74, 65537, 0, 75, 65537, 0, 76, 131073, 0, 77, 131073, 0, 78, 65537, 0, 79, 65537, 0, 80, 65537, 0, 81, 65537, 0, 82, 65537, 0, 83, 131073, 0, 84, 1, 0, 85, 65537, 0, 86, 196609, 0, 87, 131073, 0, 88, 196609, 0, 89, 1, 0, 90, 65537, 0, 91, 196609, 0, 92, 131073, 0, 93, 131073, 0, 94, 1, 0, 95, 131073, 0, 96, 1, 0, 97, 65537, 0, 98, 196609, 0, 99, 131073, 0, 100, 65537, 0, 101, 131073, 0, 102, 65537, 0, 103, 65537, 0, 104, 1, 0, 105, 1, 0, 106, 1, 0, 107, 196609, 0, 108, 65537, 0, 109, 1, 0, 110, 196609, 0, 111, 131073, 0, 112, 131073, 0, 113, 65537, 0, 114, 196609, 0, 115, 65537, 0, 116, 1, 0, 117, 131073, 0, 118, 65537, 0, 119, 65537, 0, 120, 131073, 0, 121, 131073, 0, 122, 131073, 0, 123, 1, 0, 124, 196609, 0, 125, 196609, 0, 126, 196609, 0, 127, 196609, 0, 65663, 131073, 0, 131199, 65537, 0, 196735, 131073, 0, 262271, 131073, 0, 327807, 65537, 0, 393343, 65537, 0, 458879, 131073, 0, 524415, 196609, 0, 589951, 196609, 0, 655487, 196609, 0, 721023, 196609, 0, 786559, 196609, 0, 852095, 131073, 0, 917631, 1, 0, 983167, 196609, 0, 1048703, 65537, 0, 1114239, 65537, 0, 1179775, 65537, 0, 1245311, 196609, 0, 1310847, 65537, 0, 1376383, 1, 0, 1441919, 1, 0, 65567, 1, 0, 131103, 65537, 0, 196639, 131073, 0, 262175, 1, 0, 327711, 196609, 0, 393247, 1, 0, 458783, 65537, 0, 524319, 1, 0, 589855, 196609, 0, 655391, 65537, 0, 720927, 1, 0, 786463, 131073, 0, 851999, 65537, 0, 917535, 131073, 0, 983071, 65537, 0, 1048607, 65537, 0, 1114143, 131073, 0, 1179679, 131073, 0, 1245215, 196609, 0, 1310751, 196609, 0, 1376287, 1, 0, 1441823, 196609, 0, 983046, 65537, 0, 917510, 1, 0, 851974, 65537, 0, 786438, 131073, 0, 720902, 1, 0, 655366, 65537, 0, 589830, 196609, 0, 524294, 65537, 0, 458758, 65537, 0, 393222, 131073, 0, 327686, 65537, 0, 262150, 131073, 0, 196614, 131073, 0, 131078, 1, 0, 65542, 65537, 0, 1048582, 196609, 0, 1048600, 65537, 0, 917528, 65537, 0, 983064, 131073, 0, 851992, 65537, 0, 786456, 131073, 0, 720920, 131073, 0, 655384, 1, 0, 589848, 1, 0, 524312, 196609, 0, 458776, 131073, 0, 393240, 65537, 0, 327704, 196609, 0, 262168, 196609, 0, 196632, 1, 0, 131096, 131073, 0, 65560, 196609, 0, 1114136, 196609, 0, 1179672, 196609, 0, 1245208, 196609, 0, 1310744, 196609, 0, 1376280, 131073, 0, 1441816, 131073, 0, 1572888, 65537, 0, 1638424, 196609, 0, 1703960, 65537, 0, 1769496, 1, 0, 1835032, 196609, 0, 1900568, 196609, 0, 1966104, 131073, 0, 2031640, 196609, 0, 2097176, 1, 0, 2162712, 196609, 0, 1114118, 1, 0, 1179654, 196609, 0, 1245190, 1, 0, 1310726, 131073, 0, 1376262, 196609, 0, 1441798, 1, 0, 1572870, 196609, 0, 1638406, 196609, 0, 1703942, 65537, 0, 1769478, 196609, 0, 1835014, 65537, 0, 1900550, 1, 0, 1966086, 131073, 0, 2031622, 65537, 0, 2097158, 131073, 0, 2162694, 196609, 0, 2228230, 1, 0, 2293766, 1, 0, 2359302, 65537, 0, 2424838, 131073, 0, 2490374, 1, 0, 2555910, 65537, 0, 2621446, 1, 0, 2686982, 65537, 0, 2752518, 131073, 0, 2818054, 65537, 0, 2883590, 1, 0, 2949126, 196609, 0, 3014662, 65537, 0, 3080198, 131073, 0, 3145734, 1, 0, 3211270, 1, 0, 3276806, 65537, 0, 3342342, 65537, 0, 3342343, 65537, 0, 3342344, 196609, 0, 3342345, 65537, 0, 3342346, 1, 0, 3342347, 196609, 0, 3342348, 131073, 0, 3342349, 131073, 0, 3342350, 131073, 0, 3342351, 1, 0, 3342352, 196609, 0, 3342353, 65537, 0, 3342354, 196609, 0, 3342355, 1, 0, 3342356, 131073, 0, 3342357, 196609, 0, 3342358, 65537, 0, 3342359, 65537, 0, 2228248, 1, 0, 2293784, 196609, 0, 2359320, 1, 0, 2424856, 131073, 0, 2490392, 196609, 0, 2555928, 65537, 0, 2621464, 1, 0, 2687000, 65537, 0, 2752536, 65537, 0, 2818072, 1, 0, 2883608, 65537, 0, 2949144, 1, 0, 3014680, 65537, 0, 3080216, 131073, 0, 3145752, 65537, 0, 3211288, 131073, 0, 3276824, 196609, 0, 3342360, 131073, 0)
+script = ExtResource("5_6j6fc")
+WIDTH = 128
+HEIGHT = 50
+
+[node name="Background" type="Sprite2D" parent="Level"]
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("6_kbcse")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 8192, 3328)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 2
+color = Color(0.0509804, 0.00392157, 0.0588235, 1)
+
+[node name="Player" parent="." node_paths=PackedStringArray("end", "TurnOnAtStart") instance=ExtResource("7_g8avv")]
+position = Vector2(992, 352)
+end = NodePath("../End")
+speed = 100.0
+TurnOnAtStart = [NodePath("../CanvasModulate"), NodePath("../Level/Background")]
+nextID = 5
+runningMultiplier = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ot2c4")
+
+[node name="StressMeter" type="Node2D" parent="."]
+position = Vector2(512, 512)
+script = ExtResource("8_wwtej")
+time = 30
+
+[node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_hfvew")
+bus = &"Ambience"
+
+[node name="Tramps" type="Node" parent="."]
+script = ExtResource("10_ts1s0")
+
+[node name="LevelInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelText" type="Label" parent="LevelInfo"]
+z_index = 1
+layout_mode = 0
+offset_left = 412.0
+offset_top = 464.0
+offset_right = 1580.0
+offset_bottom = 707.0
+theme = ExtResource("2_outp6")
+theme_override_font_sizes/font_size = 96
+text = "end of demo
+go outside
+meet people
+
+make friends
+
+
+conquer rome
+
+
+
+
+use the mouse
+
+
+
+
+
+
+
+
+subscribe"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelText3" type="Label" parent="LevelInfo"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 734.0
+offset_top = 1337.0
+offset_right = 1902.0
+offset_bottom = 1703.0
+rotation = -1.5708
+theme = ExtResource("2_outp6")
+theme_override_font_sizes/font_size = 96
+text = "don't go straight.
+preferably."
+vertical_alignment = 1
+
+[node name="LevelText2" type="Label" parent="LevelInfo"]
+visible = false
+z_index = 101
+layout_mode = 0
+offset_left = 2400.0
+offset_top = -440.0
+offset_right = 3568.0
+offset_bottom = -74.0
+theme = ExtResource("2_outp6")
+theme_override_font_sizes/font_size = 96
+text = "Hi
+I am here
+Join me
+"
+vertical_alignment = 1
+
+[node name="End" parent="." instance=ExtResource("12_7c3tl")]
+position = Vector2(5516, 800)

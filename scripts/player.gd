@@ -80,7 +80,8 @@ var levels = {1:"res://scenes/level01.tscn",
  2:"res://scenes/level02.tscn",
  3:"res://scenes/level03.tscn",
  4:"res://scenes/level04.tscn",
- 5:"res://scenes/level05.tscn"}
+ 5:"res://scenes/level05.tscn",
+ 6:"res://scenes/level06.tscn"}
 func _end():
 	if(nextID!=0):
 		if(nextID==1):
@@ -93,6 +94,8 @@ func _end():
 			get_tree().change_scene_to_file(levels[4])
 		elif nextID==5:
 			get_tree().change_scene_to_file(levels[5])
+		elif nextID==6:
+			get_tree().change_scene_to_file(levels[6])
 			
 		# get_tree().change_scene_to_file(next)
 		# get_tree().reload_current_scene()
