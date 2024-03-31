@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://y0x5gfwmmk3f"]
+[gd_scene load_steps=18 format=3 uid="uid://y0x5gfwmmk3f"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_whawo"]
 [ext_resource type="TileSet" uid="uid://drcy18v0gpc0d" path="res://tileset/Rocks.tres" id="2_3yxfl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://by23djxj6dfnd" path="res://images/ball-assets/ball.png" id="6_sbb4i"]
 [ext_resource type="Texture2D" uid="uid://bjsmfha28ro00" path="res://sprites/sparkle.png" id="7_doxgm"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="8_8vc3q"]
+[ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="9_xvh44"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="10_romkc"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="11_lshoq"]
 [ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="12_ccs4i"]
@@ -107,6 +108,38 @@ color = Color(0.0509804, 0.00392157, 0.0588235, 1)
 
 [node name="Tramps" type="Node" parent="."]
 script = ExtResource("8_8vc3q")
+
+[node name="Tramp6" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "19,19,0,19,14,0,25,14,0,25,19,0"
+
+[node name="Tramp" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "69,13,1,109,10,1"
+
+[node name="Tramp2" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "109,10,1,69,13,1"
+
+[node name="Tramp3" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "4,2,0,18,18,0,16,9,0"
+
+[node name="Tramp4" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "26,1,1,26,17,3"
+
+[node name="Tramp5" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "26,1,2,26,17,2"
+
+[node name="Tramp7" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "26,1,3,26,17,1"
+
+[node name="Tramp8" parent="Tramps" instance=ExtResource("9_xvh44")]
+position = Vector2(1244.04, 1251.8)
+path = "1,9,0,2,9,0,2,7,0,1,7,0,2,7,0,2,9,0"
 
 [node name="Player" parent="." node_paths=PackedStringArray("TurnOnAtStart") instance=ExtResource("10_romkc")]
 position = Vector2(96, 544)
