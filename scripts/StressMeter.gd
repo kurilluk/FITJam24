@@ -54,7 +54,15 @@ var fromLast = 0.0
 func _process(delta):
 	timeRemaining-=delta
 	if(time_bar!=null):
-		time_bar.value = abs(timeRemaining)
+		var absTime = abs(timeRemaining)
+		var min = str(int(absTime/60))
+		var sec = str(int(absTime)%60)
+		if(sec.length()==1):
+			sec="0"+sec
+		sec+="."+str(int((absTime-int(absTime))*100))
+		var timeStr = min+":"+sec
+		#print(timeStr)
+		time_bar.value = timeStr
 
 	fromLast+=delta
 	if fromLast<spu:
