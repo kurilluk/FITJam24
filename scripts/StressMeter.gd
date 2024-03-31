@@ -1,13 +1,18 @@
 extends Node2D
 @onready var fear_bar = $"../GUI/FearBar"
+var time_bar = null
 @onready var tramps = $"../Tramps"
 @onready var level = $"../Level"
 @onready var player = $"../Player"
 @export var ups : int = 5
 
+@export var time:int = 0
+
 var fear = 0.0
 
+var timeRemaining
 func _ready():
+	timeRemaining = time
 	pass
 
 func get_stress():
@@ -47,6 +52,10 @@ func get_stress():
 var spu = 1./ups
 var fromLast = 0.0
 func _process(delta):
+	timeRemaining-=delta
+	if(time_bar!=null):
+		time_bar.value = abs(timeRemaining)
+
 	fromLast+=delta
 	if fromLast<spu:
 		return
