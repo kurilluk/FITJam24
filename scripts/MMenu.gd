@@ -10,17 +10,27 @@ extends CanvasLayer
 	#pass
 #@onready var menu = $Menu
 const MENU = preload("res://scenes/menu.tscn")
-var is_open = false
+var menu_instance : Control
+
+func remove_menu():
+	if is_instance_valid(menu_instance):
+		menu_instance.queue_free()
+		
+func add_menu():
+	# only instance a new scene 2 if there is none yet
+	if !is_instance_valid(menu_instance):
+		menu_instance = MENU.instance()
+		add_child(menu_instance)
+	else:
+		print ("Scene 2 was already instanced before")
+
 
 func openMenu():
-	if !is_open:
-		#menu.open()
-		var menu = MENU.instantiate()
-		add_child(menu)
-		#is_open = true
-		
-	#else:
-		
+	if is_instance_valid(menu_instance):
+		menu_instance.queue_free()
+	else:
+		menu_instance = MENU.instantiate()
+		add_child(menu_instance)
 
 func _input(event):
 	if event.is_action_pressed("menu"):

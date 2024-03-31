@@ -100,8 +100,10 @@ script = ExtResource("1_stbbn")
 particles = NodePath("IncreaseStressParticles")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +112,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="M" type="Label" parent="CanvasLayer/Control"]
-z_index = 101
+visible = false
 layout_mode = 0
 offset_left = 1623.0
 offset_top = 1004.0
@@ -147,6 +149,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_7rl7b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="IncreaseStressParticles" type="CPUParticles2D" parent="."]
 light_mask = 0

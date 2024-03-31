@@ -30,6 +30,17 @@ glow_hdr_threshold = 1.95
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_tym3p")
 
+[node name="MMenu" type="Label" parent="GUI"]
+offset_left = 1592.0
+offset_top = 1004.0
+offset_right = 1858.0
+offset_bottom = 1052.0
+theme = ExtResource("1_rbyeo")
+theme_override_font_sizes/font_size = 38
+text = "M = main menu"
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="FearBar" type="ProgressBar" parent="GUI"]
 texture_filter = 1
 layout_direction = 2
@@ -41,10 +52,8 @@ theme = ExtResource("1_rbyeo")
 theme_override_font_sizes/font_size = 38
 theme_override_styles/background = SubResource("StyleBoxEmpty_y7p5t")
 theme_override_styles/fill = SubResource("StyleBoxTexture_h2xea")
-value = 100.0
 
 [node name="FearLabel" type="Label" parent="GUI/FearBar"]
-z_index = 101
 layout_mode = 0
 offset_left = 165.0
 offset_right = 386.0
@@ -62,7 +71,6 @@ anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="TimeLimit" type="Label" parent="GUI/Control"]
-z_index = 101
 layout_mode = 2
 offset_left = -136.0
 offset_top = 104.0
