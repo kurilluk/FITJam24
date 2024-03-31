@@ -13,7 +13,7 @@ const ARRIVE_DISTANCE = 5.0
 @export var TurnOnAtStart : Array[Node] = []
 
 var _speed_multiplier = 1.
-#var _state = State.IDLE
+var _running = false
 var _velocity = Vector2()
 
 @onready var level = $"../Level"
@@ -91,8 +91,14 @@ func _end():
 	print("end")
 	pass
 
-
+@export var runningMultiplier :float = 1.0
 func _process(_delta):
+	if Input.is_key_pressed(KEY_SHIFT) || _running:
+		stress_meter.fear += 15*_delta
+		if(stress_meter.fear>=100):
+			stress_meter.fear = 100
+			stressOverload()
+
 	if end!=null && (position-end.position).length_squared() < 25:
 		scale*=0.9
 		end.scale=scale
@@ -101,7 +107,7 @@ func _process(_delta):
 		if(scale.x<0.01):
 			_end()
 		return
-	if(location==Location.INSIDE):
+	if(location==Location.INSIDE||Input.is_key_pressed(KEY_SHIFT) || _running):
 		wiggle(_delta)
 	elif wiggleOffset.length_squared()>0.0001:
 		position-=wiggleOffset/2
@@ -113,11 +119,16 @@ func _process(_delta):
 	if !runningAway && (Logic._state != Logic.State.FOLLOW):
 		var v = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 		if(v.length_squared() > 0.1):
-			var newPos = position + 2*v*RUNNING_SPEED
+			var shift
+			if(Input.is_key_pressed(KEY_SHIFT)):
+				shift = v*RUNNING_SPEED*runningMultiplier
+			else:
+				shift = v*RUNNING_SPEED
+			var newPos = position+2*shift
 			var a = level.get_cell_source_id(0,level.local_to_map(newPos))
 			if(a == level.Tile.OBSTACLE || a==-1):
 				necistaPoloha = true
-				position+=v*RUNNING_SPEED
+				position+=shift
 				rotation = (RUNNING_ROTATION_SPEED*v.angle()+rotation)/(RUNNING_ROTATION_SPEED+1)
 				checkTileForSound(level.local_to_map(position))
 		elif necistaPoloha:
@@ -126,30 +137,6 @@ func _process(_delta):
 			checkTileForSound(level.local_to_map(position))
 			if(position.distance_to(newPos)<1):
 				necistaPoloha = false
-		#var pressed = false
-		#print(v)
-		#if Input.is_action_pressed("ui_up"):
-			#_next_point_local = level.round_local_position(position) + Vector2(0,-64)
-			#pressed = true
-		#elif Input.is_action_pressed("ui_down"):
-			#_next_point_local = level.round_local_position(position) + Vector2(0,64)
-			#pressed = true
-		#elif Input.is_action_pressed("ui_left"):
-			#_next_point_local = level.round_local_position(position) + Vector2(-64,0)
-			#pressed = true
-		#elif Input.is_action_pressed("ui_right"):
-			#_next_point_local = level.round_local_position(position) + Vector2(64,0)
-			#pressed = true
-		## print(a)
-		#if(pressed):
-			#var a = level.get_cell_source_id(0,level.local_to_map(_next_point_local))
-			#if(a == level.Tile.OBSTACLE || a==-1):
-				#isLastLeg = true
-				#Logic.set_actual_state(Logic.State.FOLLOW)
-			#else:
-				#_next_point_local = level.round_local_position(position)
-		#return
-	
 
 	if(Logic._state == Logic.State.IDLE):
 		return;
@@ -170,6 +157,7 @@ func _process(_delta):
 			#_move()
 		if _path.is_empty():
 			_change_state(Logic.State.IDLE)
+			_running = false
 			_move()
 			return
 		else:
@@ -189,9 +177,18 @@ var _queue = []
 
 var mouseClicked = false
 func _input(event):
+	if(runningAway):
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var target_location = level.round_local_position(get_global_mouse_position())
+			mouseClicked = true
+			_queue = []
+			_path = []
+			_add_to_move_queue(target_location)
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			var target_location = level.round_local_position(get_global_mouse_position())
+			_running = true
 			mouseClicked = true
 			_queue = []
 			_path = []
@@ -208,7 +205,10 @@ func _input(event):
 	# 		_add_to_move_queue(Vector2(0,64))
 
 func _move_to_local(local_position):
-	var desired_velocity = (local_position - position).normalized() * speed * _speed_multiplier
+	var rm = 1.
+	if(_running):
+		rm = 5.
+	var desired_velocity = (local_position - position).normalized() * speed * _speed_multiplier*rm
 	var steering = desired_velocity - _velocity
 	_velocity += steering / MASS
 	
