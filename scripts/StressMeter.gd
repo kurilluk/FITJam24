@@ -18,7 +18,7 @@ func get_stress():
 		for T in tramps.tramps:
 			T.beam.emitting=false
 		#player.particles.emitting = true
-		return 0
+		return 10
 		
 	#player.particles.emitting = false
 	var total=0
