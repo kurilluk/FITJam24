@@ -113,9 +113,8 @@ z_index = 1
 position = Vector2(984, 864)
 path = "1,1,0,5,5,1"
 
-[node name="Player" parent="." node_paths=PackedStringArray("TurnOnAtStart") instance=ExtResource("10_mslo6")]
-position = Vector2(544, 544)
-TurnOnAtStart = [NodePath("../CanvasModulate"), NodePath("../Level/Background")]
+[node name="Player" parent="." instance=ExtResource("10_mslo6")]
+position = Vector2(1181, 478)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2c4")

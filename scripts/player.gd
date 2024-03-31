@@ -1,6 +1,8 @@
 extends Node2D
 enum Location { INSIDE, OUTSIDE, HEALING }
 var location = Location.OUTSIDE
+@onready var sprite = $Sprite
+
 
 const MASS = 10.0
 const ARRIVE_DISTANCE = 5.0
@@ -42,6 +44,12 @@ func checkTileForSound(newTile):
 	if(newTile == prevTile):
 		return
 	prevTile = newTile
+
+	var ja = level.local_to_map(position)
+	var tileID = level.get_cell_source_id(0,ja)
+	if tileID == level.Tile.OBSTACLE:
+		_change_location(Location.INSIDE)
+
 	# print("beep")
 	if(location == Location.OUTSIDE):
 		soft_steps.play(0)
@@ -49,7 +57,30 @@ func checkTileForSound(newTile):
 		fear_steps.play(0)
 
 
+var wiggleOffset = Vector2(0,0)
+var wiggleMaxOffset = [3.0,1.5,0.9]	
+func wiggle(_delta):
+	var time = Time.get_ticks_msec()
+	sprite.offset-=wiggleOffset
+	position-=wiggleOffset/2
+	wiggleOffset = Vector2(0,0)
+	for i in range(wiggleMaxOffset.size()):
+		var t = time*0.2*(i+0.1)
+		wiggleOffset+=Vector2(sin(t)*wiggleMaxOffset[i],sin(12354+2*t)*wiggleMaxOffset[i])
+
+	sprite.offset+=wiggleOffset
+	position+=wiggleOffset/2
+
 func _process(_delta):
+	if(location==Location.INSIDE):
+		wiggle(_delta)
+	elif wiggleOffset.length_squared()>0.0001:
+		position-=wiggleOffset/2
+		sprite.offset-=wiggleOffset
+		
+		wiggleOffset=Vector2(0,0)
+		
+		
 	if !runningAway && (Logic._state != Logic.State.FOLLOW):
 		var v = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 		if(v.length_squared() > 0.1):
@@ -285,7 +316,7 @@ func stressOverload():
 	var point = level.round_local_position(position)
 	var pointMap = level.local_to_map(point)
 	while(level.get_cell_source_id(0,pointMap) == level.Tile.OBSTACLE):
-		print("left")
+		#print("left")
 		point.x -= 64
 		_add_to_move_queue(point,false)
 		pointMap = level.local_to_map(point)

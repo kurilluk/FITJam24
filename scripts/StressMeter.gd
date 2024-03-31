@@ -14,13 +14,13 @@ func get_stress():
 	var ja = level.local_to_map(player.position)
 	var tileID = level.get_cell_source_id(0,ja)
 	if tileID == level.Tile.OBSTACLE:
-		player._change_location(player.Location.INSIDE)
+		# player._change_location(player.Location.INSIDE)
 		for T in tramps.tramps:
 			T.beam.emitting=false
-		player.particles.emitting = true
-		return 10
+		#player.particles.emitting = true
+		return 0
 		
-	player.particles.emitting = false
+	#player.particles.emitting = false
 	var total=0
 	for T in tramps.tramps:
 		var on = level.local_to_map(T.transform.origin)
@@ -42,7 +42,7 @@ func get_stress():
 		player._change_location(player.Location.HEALING)
 	else:
 		player._change_location(player.Location.OUTSIDE)
-	return -100*total/9.
+	return -100*int(total)/9.
 	
 var spu = 1./ups
 var fromLast = 0.0
@@ -53,7 +53,7 @@ func _process(delta):
 	fromLast=0.0
 
 	fear+=get_stress()
-	if fear>100:
+	if fear>=100:
 		fear=100
 		player.stressOverload()
 	if(fear<0):
