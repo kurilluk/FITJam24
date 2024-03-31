@@ -16,6 +16,10 @@ var _velocity = Vector2()
 
 @onready var level = $"../Level"
 
+@onready var soft_steps = $soft_steps
+@onready var fear_steps = $fear_steps
+
+
 # var _click_position = Vector2()
 var _path = PackedVector2Array()
 var _next_point_local = Vector2()
@@ -33,11 +37,16 @@ const RUNNING_ROTATION_SPEED = 0.1
 var necistaPoloha = false
 
 var prevTile = Vector2i(-1,-1)
+
 func checkTileForSound(newTile):
 	if(newTile == prevTile):
 		return
 	prevTile = newTile
-	print("beep")
+	# print("beep")
+	if(location == Location.OUTSIDE):
+		soft_steps.play(0)
+	if(location == Location.INSIDE):
+		fear_steps.play(0)
 
 
 func _process(_delta):
