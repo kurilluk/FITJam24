@@ -52,6 +52,7 @@ func get_stress():
 	
 var spu = 1./ups
 var fromLast = 0.0
+var textChanged = false
 func _process(delta):
 	timeRemaining-=delta
 	if(time_bar!=null):
@@ -64,6 +65,9 @@ func _process(delta):
 		var timeStr = minut+":"+sec
 		#print(timeStr)
 		time_bar.text = timeStr
+	if(!textChanged && timeRemaining<0):
+		for ch in get_children():
+			ch.label.text = "chill"
 
 	fromLast+=delta
 	if fromLast<spu:
