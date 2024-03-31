@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5bsyqbmsg1ml"]
+
+[ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="1_qyts2"]
+[ext_resource type="Texture2D" uid="uid://dwausk2s72ed1" path="res://images/helper.png" id="2_ux7jf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4tuws"]
+light_mode = 1
+
+[node name="End" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+
+[node name="OverLight" type="PointLight2D" parent="Node2D"]
+rotation = 0.523599
+scale = Vector2(0.5, 0.5)
+color = Color(1, 1, 0.384314, 1)
+energy = 0.29
+texture = ExtResource("1_qyts2")
+texture_scale = 1.07
+
+[node name="Light" type="PointLight2D" parent="Node2D"]
+scale = Vector2(0.652344, 0.621094)
+color = Color(0, 1, 0.156863, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("1_qyts2")
+texture_scale = 1.69
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+z_index = 7
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_4tuws")
+texture = ExtResource("2_ux7jf")

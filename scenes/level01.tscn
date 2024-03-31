@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://biogjax4fxdhd"]
+[gd_scene load_steps=14 format=3 uid="uid://biogjax4fxdhd"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_rbyeo"]
 [ext_resource type="TileSet" uid="uid://drcy18v0gpc0d" path="res://tileset/Rocks.tres" id="2_275g0"]
 [ext_resource type="Texture2D" uid="uid://xxevbr8qqnmg" path="res://images/bar_cut_bitmap.png" id="2_f56y4"]
 [ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="3_preer"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="4_fy0y7"]
+[ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="10_djf73"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_prte6"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="12_te7ba"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="13_qp8cs"]
@@ -108,7 +109,7 @@ bus = &"Ambience"
 [node name="Tramps" type="Node" parent="."]
 script = ExtResource("10_prte6")
 
-[node name="Control" type="Control" parent="."]
+[node name="LevelInfo" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,7 +117,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control"]
+[node name="LevelText" type="Label" parent="LevelInfo"]
 z_index = 101
 layout_mode = 0
 offset_left = 128.0
@@ -127,3 +128,6 @@ theme = ExtResource("1_rbyeo")
 theme_override_font_sizes/font_size = 96
 text = "Just go straight..."
 vertical_alignment = 1
+
+[node name="End" parent="." instance=ExtResource("10_djf73")]
+position = Vector2(2528, 544)
