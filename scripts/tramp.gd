@@ -7,8 +7,8 @@ const ARRIVE_DISTANCE = 5.0
 @export var speed: float = 100.0
 #@export var steps: int = 3
 @onready var init_position = position
+@export var path : String = ""
 @export var beam:CPUParticles2D = null
-
 
 var waypoints: Array[Vector2i] = []
 var sleepTimes: Array[float] = []
@@ -27,15 +27,19 @@ var _next_point = Vector2()
 
 func _ready():
 	_change_state(State.IDLE)
-	#_steps = steps
-	# _next_position = waypoints[goalIndex]
-	# _change_state(State.FOLLOW)
-
+	
+	var line = path.split(",")
+	if(path!="" && line.size()>0):
+		for i in range(0,line.size(),3):
+			waypoints.append(Vector2i(int(line[i]),int(line[i+1])))
+			sleepTimes.append(1.0*float(line[i+2]))
+		position = _tile_map.map_to_local(waypoints[0])
+	
 var random = RandomNumberGenerator.new()
 
 var timeRemaining = 0.
 func _process(_delta):
-	if(waypoints==[]):
+	if waypoints.size()==0:
 		waypoints.append(_tile_map.local_to_map(position))
 		sleepTimes.append(0)
 	if _state != State.FOLLOW:
@@ -55,7 +59,7 @@ func _process(_delta):
 		#if _steps <= 0:
 			#_change_state(State.IDLE)
 		if _path.is_empty():
-			_change_state(State.IDLE)			
+			_change_state(State.IDLE)
 			# _next_position = init_position
 			# _change_state(State.FOLLOW)
 			return
