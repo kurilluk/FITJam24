@@ -79,19 +79,24 @@ func wiggle(_delta):
 var levels = {1:"res://scenes/level01.tscn",
  2:"res://scenes/level02.tscn",
  3:"res://scenes/level03.tscn",
- 4:"res://scenes/level04.tscn"}
+ 4:"res://scenes/level04.tscn",
+ 5:"res://scenes/level05.tscn"}
 func _end():
 	if(nextID!=0):
 		if(nextID==1):
-			print(get_tree().change_scene_to_file(levels[1]))
+			get_tree().change_scene_to_file(levels[1])
 		elif(nextID==2):
-			print(get_tree().change_scene_to_file(levels[2]))
+			get_tree().change_scene_to_file(levels[2])
 		elif nextID==3:
-			print(get_tree().change_scene_to_file(levels[3]))
+			get_tree().change_scene_to_file(levels[3])
+		elif nextID==4:
+			get_tree().change_scene_to_file(levels[4])
+		elif nextID==5:
+			get_tree().change_scene_to_file(levels[5])
 			
 		# get_tree().change_scene_to_file(next)
 		# get_tree().reload_current_scene()
-	print("end")
+	#print("end")
 	pass
 
 @export var runningMultiplier :float = 1.0
