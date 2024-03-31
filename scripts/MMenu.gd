@@ -4,6 +4,7 @@ extends CanvasLayer
 #func _ready():
 	#pass # Replace with function body.
 #
+
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -36,8 +37,6 @@ func _input(event):
 	if event.is_action_pressed("menu"):
 		#get_tree().quit()
 		openMenu()
-
-
 
 func _on_texture_button_pressed():
 	pass # Replace with function body.
