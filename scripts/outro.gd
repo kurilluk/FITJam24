@@ -23,7 +23,7 @@ func _ready():
 		#statistic.text = game_statistic.get_stats()
 func open():
 	tween = get_tree().create_tween()
-	tween.tween_property(dark_screen,"modulate:a",1.0,3.0)
+	tween.tween_property(dark_screen,"modulate:a",1.0,1.0)
 	await (tween.finished)
 	tween = get_tree().create_tween()
 	tween.tween_property(reload,"modulate:a",1.0,0.5)
@@ -37,5 +37,6 @@ func _on_reload_pressed():
 
 
 func _on_exit_pressed():
-	get_owner().queue_free()
+	#print("owner", get_owner())
+	self.queue_free()
 	#pass # Replace with function body.

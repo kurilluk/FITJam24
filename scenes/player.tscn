@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://cwenqxqagxagy" path="res://sounds/sfx/gravel_step_fear_08.mp3" id="21_2ocfm"]
 [ext_resource type="AudioStream" uid="uid://3ct3p4i8owpc" path="res://sounds/sfx/gravel_step_fear_09.mp3" id="22_1dbf5"]
 [ext_resource type="AudioStream" uid="uid://c2y5ll3u563q3" path="res://sounds/sfx/peak_inside_02.mp3" id="23_7wnbu"]
-[ext_resource type="AudioStream" uid="uid://cva1c2k7rb1i2" path="res://sounds/sfx/panic_bassdrop.mp3" id="24_w023t"]
+[ext_resource type="AudioStream" uid="uid://bh4voq837ngu4" path="res://sounds/sfx/panic_bassdrop_01.mp3" id="25_dgyq7"]
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="25_qsd07"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bolcr"]
@@ -91,7 +91,7 @@ stream_0/weight = 1.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1uj78"]
 random_pitch = 1.3
 streams_count = 1
-stream_0/stream = ExtResource("24_w023t")
+stream_0/stream = ExtResource("25_dgyq7")
 stream_0/weight = 1.0
 
 [node name="Player" type="Marker2D" node_paths=PackedStringArray("particles")]
@@ -100,8 +100,10 @@ script = ExtResource("1_stbbn")
 particles = NodePath("IncreaseStressParticles")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +112,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="M" type="Label" parent="CanvasLayer/Control"]
-z_index = 101
+visible = false
 layout_mode = 0
 offset_left = 1623.0
 offset_top = 1004.0
@@ -147,6 +149,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_7rl7b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="IncreaseStressParticles" type="CPUParticles2D" parent="."]
 light_mask = 0
@@ -174,6 +177,7 @@ scale_amount_max = 0.5
 
 [node name="soft_steps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_p8bm3")
+volume_db = -17.0
 
 [node name="fear_steps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_pyjs1")
