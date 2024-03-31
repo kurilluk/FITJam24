@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqsic8w63vpip"]
+
+[ext_resource type="Script" path="res://scripts/outro.gd" id="5_b8t2e"]
+[ext_resource type="FontFile" uid="uid://bndhiv2j056cg" path="res://UI/kenney_mini_square.ttf" id="6_vlyde"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a77p0"]
+font = ExtResource("6_vlyde")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_j4415"]
+font = ExtResource("6_vlyde")
+font_size = 28
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_b8t2e")
+
+[node name="DarkScreen" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -157.0
+offset_right = 173.5
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Do you want to quit?"
+label_settings = SubResource("LabelSettings_a77p0")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Statistic" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "We hope you don't want to ba a loosler and quit now..."
+label_settings = SubResource("LabelSettings_j4415")
+horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_vlyde")
+theme_override_font_sizes/font_size = 72
+text = "Be looser?"
+flat = true
+
+[node name="Reload" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_vlyde")
+theme_override_font_sizes/font_size = 72
+text = "Or play again?"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Reload" to="." method="_on_reload_pressed"]
