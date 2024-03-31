@@ -13,6 +13,10 @@ config_version=5
 config/name="FITJam24_NotAlone"
 run/main_scene="res://scenes/level01.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/image="res://images/logo_01.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://images/icon.png"
 
 [autoload]

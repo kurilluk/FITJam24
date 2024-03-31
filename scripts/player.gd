@@ -76,7 +76,10 @@ func wiggle(_delta):
 	position+=wiggleOffset/2
 
 @export var nextID : int = 0
-var levels = {1:"res://scenes/level01.tscn", 2:"res://scenes/gameLevel2.tscn"}
+var levels = {1:"res://scenes/level01.tscn",
+ 2:"res://scenes/level02.tscn",
+ 3:"res://scenes/level03.tscn",
+ 4:"res://scenes/level04.tscn"}
 func _end():
 	if(nextID!=0):
 		if(nextID==1):
