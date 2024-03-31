@@ -177,6 +177,7 @@ scale_amount_max = 0.5
 
 [node name="soft_steps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_p8bm3")
+volume_db = -17.0
 
 [node name="fear_steps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_pyjs1")
