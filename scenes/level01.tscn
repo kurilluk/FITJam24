@@ -6,12 +6,12 @@
 [ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="3_preer"]
 [ext_resource type="Texture2D" uid="uid://byo5k33gbv7xo" path="res://images/bar_cutBlur2_bitmap.png" id="3_vos73"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="4_fy0y7"]
+[ext_resource type="AudioStream" uid="uid://7q2t6mah27b3" path="res://sounds/ambience/ambience_basic_seamless_01.mp3" id="9_rxrm1"]
 [ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="10_djf73"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_prte6"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_sewmd"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="12_te7ba"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="13_qp8cs"]
-[ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="14_8saj4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]
 
@@ -131,7 +131,8 @@ script = ExtResource("13_qp8cs")
 time = 1
 
 [node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_8saj4")
+stream = ExtResource("9_rxrm1")
+autoplay = true
 bus = &"Ambience"
 
 [node name="Tramps" type="Node" parent="."]
