@@ -20,6 +20,10 @@ var _velocity = Vector2()
 
 @onready var soft_steps = $soft_steps
 @onready var fear_steps = $fear_steps
+@onready var peak_inside = $peak_inside
+@onready var panic = $panic
+
+
 
 
 # var _click_position = Vector2()
@@ -264,6 +268,7 @@ func _change_location(new_location):
 		location = Location.OUTSIDE
 	if(new_location==Location.INSIDE):
 		location = Location.INSIDE
+		peak_inside.play(0)
 	if(new_location==Location.HEALING):
 		location = Location.HEALING
 
@@ -279,6 +284,7 @@ func stressOverload():
 	if(runningAway):
 		return
 	runningAway = true
+	panic.play(0)
 
 	var runningAwayTarget = level.local_to_map(position)
 	runningAwayTarget.x = max(1,runningAwayTarget.x-krokuZpet)
