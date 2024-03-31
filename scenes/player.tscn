@@ -1,11 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://btqmn3pt72x8f"]
+[gd_scene load_steps=32 format=3 uid="uid://btqmn3pt72x8f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_stbbn"]
 [ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="2_4bwnu"]
+[ext_resource type="Texture2D" uid="uid://x1vt2o47pa77" path="res://images/player_2k.png" id="3_7rl7b"]
 [ext_resource type="Texture2D" uid="uid://mhfkwbk0qetn" path="res://images/HealthParticles-assets/HealthParticlesMinus.png" id="5_8ll3n"]
 [ext_resource type="AudioStream" uid="uid://bqudsbfqi3hn6" path="res://sounds/sfx/gravel_step_01.mp3" id="5_ccw36"]
 [ext_resource type="AudioStream" uid="uid://bn1grfpg2siey" path="res://sounds/sfx/gravel_step_02.mp3" id="6_qbp4s"]
-[ext_resource type="Texture2D" uid="uid://dy4q2pvlxbqo8" path="res://images/player_clear.png" id="6_sng0k"]
 [ext_resource type="AudioStream" uid="uid://cs4tvncloflwc" path="res://sounds/sfx/gravel_step_03.mp3" id="7_uc7ps"]
 [ext_resource type="AudioStream" uid="uid://brv12vuvi5de4" path="res://sounds/sfx/gravel_step_04.mp3" id="8_cdae2"]
 [ext_resource type="AudioStream" uid="uid://bmtuqg1keckv" path="res://sounds/sfx/gravel_step_05.mp3" id="9_vcasg"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://3ct3p4i8owpc" path="res://sounds/sfx/gravel_step_fear_09.mp3" id="22_1dbf5"]
 [ext_resource type="AudioStream" uid="uid://c2y5ll3u563q3" path="res://sounds/sfx/peak_inside_02.mp3" id="23_7wnbu"]
 [ext_resource type="AudioStream" uid="uid://cva1c2k7rb1i2" path="res://sounds/sfx/panic_bassdrop.mp3" id="24_w023t"]
+[ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="25_qsd07"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bolcr"]
 light_mode = 1
@@ -98,15 +99,37 @@ z_index = 2
 script = ExtResource("1_stbbn")
 particles = NodePath("IncreaseStressParticles")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="M" type="Label" parent="CanvasLayer/Control"]
+z_index = 101
+layout_mode = 0
+offset_left = 1623.0
+offset_top = 1004.0
+offset_right = 1889.0
+offset_bottom = 1052.0
+theme = ExtResource("25_qsd07")
+theme_override_font_sizes/font_size = 38
+text = "M = main menu"
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="OverLight" type="PointLight2D" parent="Node2D"]
-rotation = 0.523599
+rotation = 0.785398
 scale = Vector2(0.5, 0.5)
 color = Color(1, 0.431373, 0, 1)
-energy = 0.5
+energy = 0.75
 texture = ExtResource("2_4bwnu")
-texture_scale = 1.03
 
 [node name="Light" type="PointLight2D" parent="Node2D"]
 scale = Vector2(0.652344, 0.621094)
@@ -115,16 +138,15 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 3.0
 texture = ExtResource("2_4bwnu")
-texture_scale = 3.17
+texture_scale = 3.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 105
-texture_filter = 1
 material = SubResource("CanvasItemMaterial_bolcr")
-texture = ExtResource("6_sng0k")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_7rl7b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
 
 [node name="IncreaseStressParticles" type="CPUParticles2D" parent="."]
 light_mask = 0

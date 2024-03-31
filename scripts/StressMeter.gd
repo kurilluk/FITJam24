@@ -1,10 +1,11 @@
 extends Node2D
 @onready var fear_bar = $"../GUI/FearBar"
-var time_bar = null
+#var time_bar = null
 @onready var tramps = $"../Tramps"
 @onready var level = $"../Level"
 @onready var player = $"../Player"
 @export var ups : int = 5
+@onready var time_bar = $"../GUI/Control/TimeLimit"
 
 @export var time:int = 0
 
@@ -62,7 +63,7 @@ func _process(delta):
 		sec+="."+str(int((absTime-int(absTime))*100))
 		var timeStr = min+":"+sec
 		#print(timeStr)
-		time_bar.value = timeStr
+		time_bar.text = timeStr
 
 	fromLast+=delta
 	if fromLast<spu:

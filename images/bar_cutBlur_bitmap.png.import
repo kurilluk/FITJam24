@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xxevbr8qqnmg"
-path="res://.godot/imported/bar_cut_bitmap.png-8fc33b58f7ba2a07ec14c7f65246b4d4.ctex"
+uid="uid://brhsmw720xltp"
+path="res://.godot/imported/bar_cutBlur_bitmap.png-adbae11e9a70a7ef839cf6afa5152db3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/bar_cut_bitmap.png"
-dest_files=["res://.godot/imported/bar_cut_bitmap.png-8fc33b58f7ba2a07ec14c7f65246b4d4.ctex"]
+source_file="res://images/bar_cutBlur_bitmap.png"
+dest_files=["res://.godot/imported/bar_cutBlur_bitmap.png-adbae11e9a70a7ef839cf6afa5152db3.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

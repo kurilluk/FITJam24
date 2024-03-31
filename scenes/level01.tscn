@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://biogjax4fxdhd"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_rbyeo"]
-[ext_resource type="Script" path="res://scripts/level01.gd" id="1_tym3p"]
+[ext_resource type="Script" path="res://scripts/MMenu.gd" id="1_tym3p"]
 [ext_resource type="TileSet" uid="uid://drcy18v0gpc0d" path="res://tileset/Rocks.tres" id="2_275g0"]
-[ext_resource type="Texture2D" uid="uid://xxevbr8qqnmg" path="res://images/bar_cut_bitmap.png" id="2_f56y4"]
 [ext_resource type="Script" path="res://scripts/astarUniversal.gd" id="3_preer"]
+[ext_resource type="Texture2D" uid="uid://byo5k33gbv7xo" path="res://images/bar_cutBlur2_bitmap.png" id="3_vos73"]
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="4_fy0y7"]
 [ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="10_djf73"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_prte6"]
@@ -16,7 +16,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7p5t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2xea"]
-texture = ExtResource("2_f56y4")
+texture = ExtResource("3_vos73")
 axis_stretch_horizontal = 1
 
 [sub_resource type="Environment" id="Environment_ot2c4"]
@@ -26,51 +26,64 @@ glow_blend_mode = 0
 glow_hdr_threshold = 1.95
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_tym3p")
 
 [node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="GUI"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Control"]
-layout_mode = 0
-offset_left = -104.0
-offset_top = -52.0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="GUI/Control"]
-layout_mode = 0
-offset_left = -960.0
-offset_top = -540.0
-offset_right = -920.0
-offset_bottom = -500.0
-
-[node name="todo_texture_bar" type="TextureProgressBar" parent="GUI"]
-offset_left = 128.0
-offset_top = 96.0
-offset_right = 512.0
-offset_bottom = 136.0
+script = ExtResource("1_tym3p")
 
 [node name="FearBar" type="ProgressBar" parent="GUI"]
+texture_filter = 1
 layout_direction = 2
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 1010.0
-offset_bottom = 50.0
+offset_left = 24.0
+offset_top = 1004.0
+offset_right = 1024.0
+offset_bottom = 1052.0
 theme = ExtResource("1_rbyeo")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 38
 theme_override_styles/background = SubResource("StyleBoxEmpty_y7p5t")
 theme_override_styles/fill = SubResource("StyleBoxTexture_h2xea")
 value = 100.0
+
+[node name="FearLabel" type="Label" parent="GUI/FearBar"]
+z_index = 101
+layout_mode = 0
+offset_left = 165.0
+offset_right = 386.0
+offset_bottom = 48.0
+theme = ExtResource("1_rbyeo")
+theme_override_font_sizes/font_size = 38
+text = "Fear level"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="TimeLimit" type="Label" parent="GUI/Control"]
+z_index = 101
+layout_mode = 2
+offset_left = -136.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 184.0
+theme = ExtResource("1_rbyeo")
+theme_override_font_sizes/font_size = 64
+text = "00:00:00"
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI/Control"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 144.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
 
 [node name="Level" type="TileMap" parent="."]
 z_index = 2
@@ -107,6 +120,7 @@ environment = SubResource("Environment_ot2c4")
 [node name="StressMeter" type="Node2D" parent="."]
 position = Vector2(512, 512)
 script = ExtResource("13_qp8cs")
+time = 1
 
 [node name="DynamicAmbient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_8saj4")

@@ -43,7 +43,6 @@ texture_scale = 1.69
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 7
-texture_filter = 1
 material = SubResource("CanvasItemMaterial_kbtj1")
 texture = ExtResource("3_n0gn2")
 

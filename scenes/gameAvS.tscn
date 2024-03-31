@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="11_6y3gv"]
 [ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_m77vg"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="12_yqpm5"]
-[ext_resource type="PackedScene" path="res://scenes/end.tscn" id="13_83vy1"]
+[ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="13_83vy1"]
 [ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="14_ftrb0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_foa8s"]

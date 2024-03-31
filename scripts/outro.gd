@@ -12,12 +12,8 @@ var tween
 func _ready():
 	dark_screen.modulate.a = 0.0
 	reload.modulate.a = 0.0
+	open()
 	#process_game_statistic()
-	tween = get_tree().create_tween()
-	tween.tween_property(dark_screen,"modulate:a",1.0,3.0)
-	await (tween.finished)
-	tween = get_tree().create_tween()
-	tween.tween_property(reload,"modulate:a",1.0,0.5)
 	#reload.visible = true
 	#pass # Replace with function body.
 #
@@ -25,7 +21,12 @@ func _ready():
 	#game_statistic = Helpers.get_game_statisitic()
 	#if game_statistic.initialized:
 		#statistic.text = game_statistic.get_stats()
-
+func open():
+	tween = get_tree().create_tween()
+	tween.tween_property(dark_screen,"modulate:a",1.0,3.0)
+	await (tween.finished)
+	tween = get_tree().create_tween()
+	tween.tween_property(reload,"modulate:a",1.0,0.5)
 	
 func _on_reload_pressed():
 	#var dark_tween = dark_screen.apear()
@@ -36,5 +37,5 @@ func _on_reload_pressed():
 
 
 func _on_exit_pressed():
-	get_tree().quit()
+	get_owner().queue_free()
 	#pass # Replace with function body.
