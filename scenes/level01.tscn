@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://biogjax4fxdhd"]
+[gd_scene load_steps=16 format=3 uid="uid://biogjax4fxdhd"]
 
 [ext_resource type="Theme" uid="uid://dhwpta7qgho67" path="res://UI/UI_theme.tres" id="1_rbyeo"]
 [ext_resource type="Script" path="res://scripts/level01.gd" id="1_tym3p"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://8ohvsc1ifcrc" path="res://images/cracked-rock-1024x1024-assets/rock.png" id="4_fy0y7"]
 [ext_resource type="PackedScene" uid="uid://c5bsyqbmsg1ml" path="res://scenes/end.tscn" id="10_djf73"]
 [ext_resource type="Script" path="res://scripts/Tramps.gd" id="10_prte6"]
+[ext_resource type="PackedScene" uid="uid://d3cfww00ag4cy" path="res://scenes/tramp.tscn" id="11_sewmd"]
 [ext_resource type="PackedScene" uid="uid://btqmn3pt72x8f" path="res://scenes/player.tscn" id="12_te7ba"]
 [ext_resource type="Script" path="res://scripts/StressMeter.gd" id="13_qp8cs"]
 [ext_resource type="AudioStream" uid="uid://dun8vvei2xm7h" path="res://sounds/ambience/ambience_fear_01.mp3" id="14_8saj4"]
@@ -93,10 +94,12 @@ light_mask = 2
 visibility_layer = 2
 color = Color(0.0509804, 0.00392157, 0.0588235, 1)
 
-[node name="Player" parent="." node_paths=PackedStringArray("TurnOnAtStart") instance=ExtResource("12_te7ba")]
-position = Vector2(2176, 580)
+[node name="Player" parent="." node_paths=PackedStringArray("end", "TurnOnAtStart") instance=ExtResource("12_te7ba")]
+position = Vector2(736, 672)
+end = NodePath("../End")
 speed = 100.0
 TurnOnAtStart = [NodePath("../CanvasModulate"), NodePath("../Level/Background")]
+nextID = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2c4")
@@ -112,6 +115,10 @@ bus = &"Ambience"
 [node name="Tramps" type="Node" parent="."]
 script = ExtResource("10_prte6")
 
+[node name="Tramp" parent="Tramps" instance=ExtResource("11_sewmd")]
+visible = false
+position = Vector2(1952, 800)
+
 [node name="LevelInfo" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -123,9 +130,9 @@ grow_vertical = 2
 [node name="LevelText" type="Label" parent="LevelInfo"]
 z_index = 101
 layout_mode = 0
-offset_left = 128.0
+offset_left = 208.0
 offset_top = 512.0
-offset_right = 1296.0
+offset_right = 1376.0
 offset_bottom = 672.0
 theme = ExtResource("1_rbyeo")
 theme_override_font_sizes/font_size = 96
