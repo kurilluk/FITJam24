@@ -14,8 +14,8 @@ var _start_point = Vector2i()
 var _end_point = Vector2i()
 var _path = PackedVector2Array()
 
-const WIDTH = 64
-const HEIGHT = 16
+@export var WIDTH:int = 64
+@export var  HEIGHT:int = 16
 func isInBounds(point_map):
 	if(point_map.x < 0 or point_map.x >= WIDTH or point_map.y < 0 or point_map.y >= HEIGHT):
 		return false

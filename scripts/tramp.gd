@@ -34,7 +34,7 @@ func _ready():
 			waypoints.append(Vector2i(int(line[i]),int(line[i+1])))
 			sleepTimes.append(1.0*float(line[i+2]))
 		position = _tile_map.map_to_local(waypoints[0])
-	
+	print(waypoints)
 var random = RandomNumberGenerator.new()
 
 var timeRemaining = 0.

@@ -31,6 +31,15 @@ var isLastLeg = false
 const RUNNING_SPEED = 5.
 const RUNNING_ROTATION_SPEED = 0.1
 var necistaPoloha = false
+
+var prevTile = Vector2i(-1,-1)
+func checkTileForSound(newTile):
+	if(newTile == prevTile):
+		return
+	prevTile = newTile
+	print("beep")
+
+
 func _process(_delta):
 	if !runningAway && (Logic._state != Logic.State.FOLLOW):
 		var v = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
@@ -41,9 +50,11 @@ func _process(_delta):
 				necistaPoloha = true
 				position+=v*RUNNING_SPEED
 				rotation = (RUNNING_ROTATION_SPEED*v.angle()+rotation)/(RUNNING_ROTATION_SPEED+1)
+				checkTileForSound(level.local_to_map(position))
 		elif necistaPoloha:
 			var newPos = level.round_local_position(position)
 			position=(position+newPos)/2
+			checkTileForSound(level.local_to_map(position))
 			if(position.distance_to(newPos)<1):
 				necistaPoloha = false
 		#var pressed = false
@@ -80,6 +91,7 @@ func _process(_delta):
 	# 		_change_state(Logic.State.FOLLOW)
 
 	var arrived_to_next_point_local = _move_to_local(_next_point_local)
+	checkTileForSound(level.local_to_map(position))
 	if arrived_to_next_point_local:
 		if(!_path.is_empty()):
 			_path.remove_at(0)

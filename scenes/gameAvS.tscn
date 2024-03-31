@@ -68,7 +68,7 @@ texture_repeat = 2
 texture = ExtResource("2_cip7m")
 centered = false
 region_enabled = true
-region_rect = Rect2(2.08165e-12, 2.08165e-12, 4096, 1024)
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 8192, 1024)
 
 [node name="Character" type="Marker2D" parent="."]
 visible = false
@@ -111,6 +111,7 @@ script = ExtResource("12_yqpm5")
 [node name="Tramp" parent="Tramps" instance=ExtResource("11_m77vg")]
 z_index = 1
 position = Vector2(984, 864)
+path = "1,1,0,5,5,1"
 
 [node name="Player" parent="." node_paths=PackedStringArray("TurnOnAtStart") instance=ExtResource("10_mslo6")]
 position = Vector2(544, 544)
