@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3cfww00ag4cy"]
+[gd_scene load_steps=8 format=3 uid="uid://d3cfww00ag4cy"]
 
 [ext_resource type="Script" path="res://scripts/tramp.gd" id="1_gbiho"]
 [ext_resource type="Texture2D" uid="uid://cubkena4imcpb" path="res://images/LightMap-assets/light.png" id="2_dw47v"]
-[ext_resource type="Texture2D" uid="uid://c3i3c0yif2yfk" path="res://images/ball-assets/trump.png" id="4_quy3u"]
+[ext_resource type="Texture2D" uid="uid://dwausk2s72ed1" path="res://images/helper.png" id="3_n0gn2"]
+[ext_resource type="AudioStream" uid="uid://cy64vg3g2v6sg" path="res://sounds/ambience/ambience_talking_seamless_02.mp3" id="5_8fpwl"]
 [ext_resource type="Texture2D" uid="uid://btgadkxdtc406" path="res://images/HealthParticles-assets/HealthParticles.png" id="5_mkbcv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kbtj1"]
@@ -17,8 +18,6 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [node name="Tramp" type="Marker2D" node_paths=PackedStringArray("beam")]
-position = Vector2(472, 352)
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gbiho")
 beam = NodePath("DecreaseStressParticles")
 
@@ -43,9 +42,9 @@ texture = ExtResource("2_dw47v")
 texture_scale = 1.69
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
+texture_filter = 1
 material = SubResource("CanvasItemMaterial_kbtj1")
-texture = ExtResource("4_quy3u")
+texture = ExtResource("3_n0gn2")
 
 [node name="DecreaseStressParticles" type="CPUParticles2D" parent="."]
 light_mask = 0
@@ -62,3 +61,8 @@ emission_sphere_radius = 60.42
 gravity = Vector2(1000, 1000)
 scale_amount_min = 0.1
 scale_amount_max = 0.5
+
+[node name="Talking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8fpwl")
+autoplay = true
+max_distance = 256.0

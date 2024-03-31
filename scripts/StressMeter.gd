@@ -3,7 +3,7 @@ extends Node2D
 @onready var tramps = $"../Tramps"
 @onready var level = $"../Level"
 @onready var player = $"../Player"
-@export var ups : int = 5
+
 
 var fear = 0.0
 
@@ -20,7 +20,7 @@ func get_stress():
 		player.particles.emitting = true
 		return 10
 		
-	player.particles.emitting = false
+	player.particles.emitting = false		
 	var total=0
 	for T in tramps.tramps:
 		var on = level.local_to_map(T.transform.origin)
@@ -44,7 +44,7 @@ func get_stress():
 		player._change_location(player.Location.OUTSIDE)
 	return -100*total/9.
 	
-var spu = 1./ups
+const spu = 0.2
 var fromLast = 0.0
 func _process(delta):
 	fromLast+=delta
