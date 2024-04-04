@@ -29,9 +29,11 @@ func add_menu():
 func openMenu():
 	if is_instance_valid(menu_instance):
 		menu_instance.queue_free()
+		get_tree().paused = false
 	else:
 		menu_instance = MENU.instantiate()
 		add_child(menu_instance)
+		get_tree().paused = true
 
 func _input(event):
 	if event.is_action_pressed("menu"):

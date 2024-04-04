@@ -35,15 +35,19 @@ func _ready():
 		#statistic.text = game_statistic.get_stats()
 func open():
 	tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(dark_screen,"modulate:a",1.0,0.5)
 	await (tween.finished)
 	tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(statistic,"modulate:a",1.0,1.5)
 	await (tween.finished)
 	tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(egg,"modulate:a",1.0,1.5)
 	await (tween.finished)
 	tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(m_menu,"modulate:a",1.0,1.5)
 	
 func _on_reload_pressed():
@@ -77,12 +81,16 @@ func _on_exit_pressed():
 
 
 func _on_tutorial_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/level01.tscn")
 
 
+
 func _on_level_4_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/level04.tscn")
 
 
 func _on_level_5_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/level05.tscn")

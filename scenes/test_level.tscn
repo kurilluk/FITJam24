@@ -40,7 +40,6 @@ color = Color(0.0509804, 0.00392157, 0.0588235, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_g4e2b")]
 position = Vector2(537, 288)
-steps = 50
 
 [node name="Tramp" parent="." instance=ExtResource("7_jqrqf")]
 visible = false
